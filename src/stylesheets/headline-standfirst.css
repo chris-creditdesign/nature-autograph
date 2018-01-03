@@ -1,0 +1,10 @@
+svg text.svg-headline {
+	text-transform: uppercase;
+	font-size: 33px;
+	font-family: Knockout-68FullFeatherwt;
+	letter-spacing: 2px;
+}
+
+svg text {
+	font-family: NewsGothicMTOT-Regular
+}
