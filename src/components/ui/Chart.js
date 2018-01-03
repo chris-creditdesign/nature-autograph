@@ -35,7 +35,7 @@ class Chart extends Component {
 			.range([svgDimensions.height - margins.bottom - margins.top, 0])
 
 		return (
-			<svg width={svgDimensions.width} height={svgDimensions.height}>
+			<svg id="svg-chart" width={svgDimensions.width} height={svgDimensions.height}>
 				<rect
 					className="svg-background"
 					width={svgDimensions.width}
