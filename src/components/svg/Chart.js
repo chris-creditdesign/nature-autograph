@@ -5,7 +5,7 @@ import YAxis from './YAxis'
 import XAxis from './XAxis'
 import Bars from './Bars'
 import Baseline from './Baseline'
-import data from '../../data'
+import { data } from '../../initialState'
 
 
 class Chart extends Component {

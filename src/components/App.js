@@ -1,6 +1,6 @@
 import React from 'react'
-import Chart from './ui/Chart'
-import ChartExport from './ChartExport'
+import Chart from './svg/Chart'
+import ControlsContainer from './containers/ControlsContainer'
 import '../stylesheets/App.css'
 
 const App = () => 
@@ -8,7 +8,7 @@ const App = () =>
 		<h1>Nature ChartBuilder
 		</h1>
 		<Chart />
-		<ChartExport />
+		<ControlsContainer />
 	
 	</div>
 

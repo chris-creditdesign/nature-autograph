@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import saveSvgAsPng from 'save-svg-as-png'
 
-class ChartExport extends Component {
+class DownloadChart extends Component {
 	constructor(props) {
 		super(props)
 
@@ -50,4 +50,4 @@ class ChartExport extends Component {
 	}
 }
 
-export default ChartExport
+export default DownloadChart
