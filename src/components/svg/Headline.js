@@ -1,15 +1,28 @@
 import React, { Component } from 'react'
 
 class Headline extends Component {
-	componentDidMount() {
-		console.log("Headline height: " + this.textElement.getBBox().height)
+	constructor(props) {
+		super(props)
+
+		this.checkHeadlineHeight = this.checkHeadlineHeight.bind(this)
 	}
 
-	componentDidUpdate() {
-		console.log("Headline height: " + this.textElement.getBBox().height)		
+	checkHeadlineHeight() {
+		if (this.props.margins.headlineHeight !== this.textElement.getBBox().height) {
+			this.props.onHeadlineHeightChange(this.textElement.getBBox().height)
+		}		
+	}
+
+	componentDidMount() {
+		this.checkHeadlineHeight()
+	}
+
+	componentDidUpdate() {		
+		this.checkHeadlineHeight()
 	}
 
 	render() {
+
 		const headlineStyle = {
 			textTransform: "uppercase",
 			fontFamily: "Knockout-68FullFeatherwt",

@@ -56,26 +56,39 @@ export const errors = (state=[], action) => {
 
 }
 
-export const margins = (state=initialState.margins, action) =>
-	action.type === C.CHANGE_MARGINS ?
-		action.payload :
-		state
-
 export const svgDimensions = (state=initialState.svgDimensions, action) =>
 	action.type === C.CHANGE_SVGDIMENSIONS ?
 		action.payload :
 		state
 
-export const headlineHeight = (state=initialState.margins, action) =>
-	action.type === C.CHANGE_HEADLINE_HEIGHT ?
-		{	...state,
-			headlineHeight: action.payload} :
+export const top = (state=50, action) =>
+	action.type === C.CHANGE_MARGIN_TOP ?
+		action.payload :
 		state
 
-export const standfirstHeight = (state=initialState.margins, action) =>
+export const bottom = (state=50, action) =>
+	action.type === C.CHANGE_MARGIN_BOTTOM ?
+		action.payload :
+		state
+
+export const left = (state=50, action) =>
+	action.type === C.CHANGE_MARGIN_LEFT ?
+		action.payload :
+		state
+
+export const right = (state=50, action) =>
+	action.type === C.CHANGE_MARGIN_RIGHT ?
+		action.payload :
+		state
+
+export const headlineHeight = (state=30, action) =>
+	action.type === C.CHANGE_HEADLINE_HEIGHT ?
+		action.payload :
+		state
+
+export const standfirstHeight = (state=36, action) => 
 	action.type === C.CHANGE_STANDFIRST_HEIGHT ?
-		{	...state,
-			standfirstHeight: action.payload} :
+		action.payload :
 		state
 
 export default combineReducers({
@@ -86,6 +99,13 @@ export default combineReducers({
 	source,
 	footnote,
 	errors,
-	margins,
+	margins: combineReducers({
+		top,
+		bottom,
+		left,
+		right,
+		headlineHeight,
+		standfirstHeight
+	}),
 	svgDimensions
 })

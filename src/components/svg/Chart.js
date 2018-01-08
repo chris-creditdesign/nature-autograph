@@ -8,39 +8,36 @@ import XAxis from './XAxis'
 import Bars from './Bars'
 import Baseline from './Baseline'
 
-
 class Chart extends Component {
 
 	constructor(props) {
 		super(props)
 
-		this.graphicWidth = props.svgDimensions.width
-							- props.margins.right
-							- props.margins.left
-
-		this.graphicHeight = props.svgDimensions.height 
-							- props.margins.top
-							- props.margins.bottom 
-							- props.margins.headlineHeight
-							- props.margins.standfirstHeight
-
-		this.maxValue = Math.max(...this.props.data.map(d => d.value))
-
 		this.xScale = scaleBand()
 		this.yScale = scaleLinear()
+	}
+
+	render() {
+		const maxValue = Math.max(...this.props.data.map(d => d.value))
+
+		const graphicWidth = this.props.svgDimensions.width
+							- this.props.margins.right
+							- this.props.margins.left
+
+		const graphicHeight = this.props.svgDimensions.height 
+							- this.props.margins.top
+							- this.props.margins.bottom 
+							- this.props.margins.headlineHeight
+							- this.props.margins.standfirstHeight
 
 		this.xScale
 			.padding(0.5)
 			.domain(this.props.data.map(d => d.title))
-			.range([0, this.graphicWidth])
+			.range([0, graphicWidth])
 
 		this.yScale
-			.domain([0, this.maxValue])
-			.range([this.graphicHeight, 0])
-
-	}
-
-	render() {
+			.domain([0, maxValue])
+			.range([graphicHeight, 0])
 
 		return (
 			<svg id="svg-chart"
@@ -57,8 +54,8 @@ class Chart extends Component {
 
 				<rect
 					className="svg-whitebox"
-					width={this.graphicWidth}
-					height={this.graphicHeight}
+					width={graphicWidth}
+					height={graphicHeight}
 					fill={"#ffffff"}
 					x={this.props.margins.right}
 					y={this.props.margins.top 
@@ -69,12 +66,14 @@ class Chart extends Component {
 				<Headline
 					margins={this.props.margins}
 					text={this.props.headline}
+					onHeadlineHeightChange={(value) => this.props.onHeadlineHeightChange(value)}
 				/>
 
 				<Standfirst
 					margins={this.props.margins}
 					svgDimensions={this.props.svgDimensions}
 					text={this.props.standfirst}
+					onStandfirstHeightChange={(value) => this.props.onStandfirstHeightChange(value)}
 				/>
 
 				<YAxis

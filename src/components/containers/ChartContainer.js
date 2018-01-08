@@ -1,5 +1,6 @@
 import Chart from '../svg/Chart'
 import { connect } from 'react-redux'
+import * as actions from '../../actions'
 
 const mapStateToProps = (state, props) =>
 	({
@@ -10,6 +11,20 @@ const mapStateToProps = (state, props) =>
 		svgDimensions: state.svgDimensions
 	})
 
-const ChartContainer = connect(mapStateToProps)(Chart)
+const mapDispatchToProps = (dispatch) =>
+	({
+		onHeadlineHeightChange(value) {
+			dispatch(
+				actions.changeHeadlineHeight(value)
+			)
+		},
+		onStandfirstHeightChange(value) {
+			dispatch(
+				actions.changeStandfirstHeight(value)
+			)
+		}
+	})
+
+const ChartContainer = connect(mapStateToProps,mapDispatchToProps)(Chart)
 
 export default ChartContainer

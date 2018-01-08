@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
 
 class Standfirst extends Component {
-	componentDidMount() {
-		console.log("Standfirst height: " + this.textElement.getBBox().height)
+	constructor(props) {
+		super(props)
+
+		this.checkStandfirstHeight = this.checkStandfirstHeight.bind(this)
 	}
 
-	componentDidUpdate() {
-		console.log("Standfirst height: " + this.textElement.getBBox().height)		
+	checkStandfirstHeight() {
+		if (this.props.margins.standfirstHeight !== this.textElement.getBBox().height) {
+			this.props.onStandfirstHeightChange(this.textElement.getBBox().height)
+		}		
+	}
+
+	componentDidMount() {
+		this.checkStandfirstHeight()
+	}
+
+	componentDidUpdate() {		
+		this.checkStandfirstHeight()
 	}
 
 	render() {
