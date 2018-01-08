@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 class Standfirst extends Component {
 	componentDidMount() {
-		console.log(this.textElement.getBBox().height)
+		console.log("Standfirst height: " + this.textElement.getBBox().height)
 	}
 
 	componentDidUpdate() {
-		console.log(this.textElement.getBBox().height)		
+		console.log("Standfirst height: " + this.textElement.getBBox().height)		
 	}
 
 	render() {
@@ -22,7 +22,7 @@ class Standfirst extends Component {
 					<tspan
 						key={i}
 						x={this.props.margins.right}
-						y={this.props.margins.top + 25 + (i * 20)} >
+						y={this.props.margins.top + this.props.margins.headlineHeight + (i * 20)} >
 						{text}
 					</tspan>
 				)}

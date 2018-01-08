@@ -1,11 +1,10 @@
 import React from 'react'
 import { format } from 'd3-format'
 
-const YAxis = ({ scales, margins, svgDimensions, formatString }) => {
+const YAxis = ({ yScale, margins, svgDimensions, formatString }) => {
 	
 	const { width } = svgDimensions
-	const { yScale } = scales
-	const { top, headlineHeight, left, right } = margins
+	const { top, headlineHeight, standfirstHeight, left, right } = margins
 	const percentage = format(formatString)
 
 	const dottedStyle = {
@@ -45,7 +44,7 @@ const YAxis = ({ scales, margins, svgDimensions, formatString }) => {
 				)
 
 	return (
-		<g className="yAxis" transform={`translate(${left},${top + headlineHeight})`}>
+		<g className="yAxis" transform={`translate(${left},${top + headlineHeight + standfirstHeight})`}>
 			<g className="yTicks">
 				{ticks}
 			</g>

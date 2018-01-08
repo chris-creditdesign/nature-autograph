@@ -1,22 +1,33 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Headline = ({ margins, text }) => {
-
-	const headlineStyle = {
-		textTransform: "uppercase",
-		fontFamily: "Knockout-68FullFeatherwt",
-		fontSize: 30,
-		letterSpacing: 1
+class Headline extends Component {
+	componentDidMount() {
+		console.log("Headline height: " + this.textElement.getBBox().height)
 	}
 
-	return (
-		<text 
-			x={margins.right}
-			y={margins.top} 
-			style={headlineStyle}>
-			{text}
-		</text>
-	)
+	componentDidUpdate() {
+		console.log("Headline height: " + this.textElement.getBBox().height)		
+	}
+
+	render() {
+		const headlineStyle = {
+			textTransform: "uppercase",
+			fontFamily: "Knockout-68FullFeatherwt",
+			fontSize: 30,
+			letterSpacing: 1
+		}
+		
+		return (
+			<text
+				ref={text => this.textElement = text}
+				x={this.props.margins.right}
+				y={this.props.margins.top} 
+				style={headlineStyle}>
+				{this.props.text}
+			</text>
+		)
+	}
+
 
 }
 

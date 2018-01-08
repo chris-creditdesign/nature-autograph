@@ -7,91 +7,105 @@ import YAxis from './YAxis'
 import XAxis from './XAxis'
 import Bars from './Bars'
 import Baseline from './Baseline'
-import { data } from '../../initialState'
 
 
 class Chart extends Component {
 
 	constructor(props) {
 		super(props)
+
+		this.graphicWidth = props.svgDimensions.width
+							- props.margins.right
+							- props.margins.left
+
+		this.graphicHeight = props.svgDimensions.height 
+							- props.margins.top
+							- props.margins.bottom 
+							- props.margins.headlineHeight
+							- props.margins.standfirstHeight
+
+		this.maxValue = Math.max(...this.props.data.map(d => d.value))
+
 		this.xScale = scaleBand()
 		this.yScale = scaleLinear()
+
+		this.xScale
+			.padding(0.5)
+			.domain(this.props.data.map(d => d.title))
+			.range([0, this.graphicWidth])
+
+		this.yScale
+			.domain([0, this.maxValue])
+			.range([this.graphicHeight, 0])
+
 	}
 
 	render() {
-		const margins = {top: 50, headlineHeight: 100, right: 50, bottom: 50, left: 50}
-		const svgDimensions = {
-			width: 800,
-			height: 500
-		}
-
-		const maxValue = Math.max(...data.map(d => d.value))
-
-		const xScale = this.xScale
-			.padding(0.5)
-			.domain(data.map(d => d.title))
-			.range([0, svgDimensions.width - margins.left - margins.right])
-
-		const yScale = this.yScale
-			.domain([0, maxValue])
-			.range([svgDimensions.height - margins.bottom - margins.top, 0])
 
 		return (
 			<svg id="svg-chart"
-				width={svgDimensions.width}
-				height={svgDimensions.height + margins.headlineHeight}>
+				width={this.props.svgDimensions.width}
+				height={this.props.svgDimensions.height}>
+
 				<rect
 					className="svg-background"
-					width={svgDimensions.width}
-					height={svgDimensions.height + margins.headlineHeight}
+					width={this.props.svgDimensions.width}
+					height={this.props.svgDimensions.height}
 					fill={"#f6f5ee"}
 					x={0} y={0} >
 				</rect>
 
 				<rect
 					className="svg-whitebox"
-					width={svgDimensions.width - margins.right - margins.left}
-					height={svgDimensions.height - margins.top - margins.bottom }
+					width={this.graphicWidth}
+					height={this.graphicHeight}
 					fill={"#ffffff"}
-					x={margins.right} y={margins.top + margins.headlineHeight} >
+					x={this.props.margins.right}
+					y={this.props.margins.top 
+						+ this.props.margins.headlineHeight
+						+ this.props.margins.standfirstHeight} >
 				</rect>
 
 				<Headline
-					margins={margins}
+					margins={this.props.margins}
 					text={this.props.headline}
 				/>
 
 				<Standfirst
-					margins={margins}
-					svgDimensions={svgDimensions}
+					margins={this.props.margins}
+					svgDimensions={this.props.svgDimensions}
 					text={this.props.standfirst}
 				/>
 
 				<YAxis
-					scales={{ xScale, yScale }}
-					margins={margins}
-					svgDimensions={svgDimensions}
+					yScale={this.yScale}
+					margins={this.props.margins}
+					headlineHeight={this.props.headlineHeight}
+					standfirstHeight={this.props.standfirstHeight}
+					svgDimensions={this.props.svgDimensions}
 					formatString={""}
 				/>
 
 				<Bars
-					scales={{ xScale, yScale }}
-					margins={margins}
-					data={data}
-					svgDimensions={svgDimensions}
+					yScale={this.yScale}
+					xScale={this.xScale}
+					margins={this.props.margins}
+					data={this.props.data}
+					svgDimensions={this.props.svgDimensions}
 				/>
 
 				<XAxis
-					scales={{ xScale, yScale }}
-					margins={margins}
-					svgDimensions={svgDimensions}
-					data={data}
+					xScale={this.xScale}
+					margins={this.props.margins}
+					svgDimensions={this.props.svgDimensions}
+					data={this.props.data}
 				/>
 
 				<Baseline
-					scales={{ xScale, yScale }}
-					margins={margins}
-					svgDimensions={svgDimensions}
+					yScale={this.yScale}
+					xScale={this.xScale}
+					margins={this.props.margins}
+					svgDimensions={this.props.svgDimensions}
 				/>
 			</svg>
 		)

@@ -1,10 +1,9 @@
 import React from 'react'
 
-const XAxis = ({ scales, margins, svgDimensions, data }) => {
+const XAxis = ({ xScale, margins, svgDimensions, data }) => {
 
 	const { height } = svgDimensions
-	const { xScale } = scales
-	const { headlineHeight, left, bottom } = margins
+	const { left, bottom } = margins
 
 	const smallTickStyle = {
 			stroke: "#000000",
@@ -41,7 +40,7 @@ const XAxis = ({ scales, margins, svgDimensions, data }) => {
 			)
 
 	return (
-		<g className="xAxis" transform={`translate(${left},${height + headlineHeight - bottom})`}>
+		<g className="xAxis" transform={`translate(${left},${height - bottom})`}>
 			<g className="xTicks">
 				{ticks}
 			</g>

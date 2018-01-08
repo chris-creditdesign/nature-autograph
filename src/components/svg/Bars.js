@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Bars = ({ scales, margins, data, svgDimensions }) => {
+const Bars = ({ xScale, yScale, margins, data, svgDimensions }) => {
 
 	const { height } = svgDimensions
-	const { xScale, yScale } = scales
-	const { top, headlineHeight, bottom, left } = margins
+	const { top, headlineHeight, standfirstHeight, bottom, left } = margins
+	const graphicHeight = height - headlineHeight - standfirstHeight - bottom - top
 
 	const bars = (
 		data.map(datum => 
@@ -12,7 +12,7 @@ const Bars = ({ scales, margins, data, svgDimensions }) => {
 				key={datum.title}
 				x={xScale(datum.title)}
 				y={yScale(datum.value)}
-				height={height - bottom - top - yScale(datum.value)}
+				height={graphicHeight - yScale(datum.value)}
 				width={xScale.bandwidth()}
 				fill={"#ea5153"}
 			/>
@@ -20,7 +20,7 @@ const Bars = ({ scales, margins, data, svgDimensions }) => {
 	)
 
 	return (
-		<g transform={`translate(${left},${top + headlineHeight})`}>
+		<g transform={`translate(${left},${top + headlineHeight + standfirstHeight})`}>
 			{bars}
 		</g>
 	)
