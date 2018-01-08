@@ -4,7 +4,7 @@ const Bars = ({ scales, margins, data, svgDimensions }) => {
 
 	const { height } = svgDimensions
 	const { xScale, yScale } = scales
-	const { top, bottom, left } = margins
+	const { top, headlineHeight, bottom, left } = margins
 
 	const bars = (
 		data.map(datum => 
@@ -20,7 +20,7 @@ const Bars = ({ scales, margins, data, svgDimensions }) => {
 	)
 
 	return (
-		<g transform={`translate(${top},${left})`}>
+		<g transform={`translate(${left},${top + headlineHeight})`}>
 			{bars}
 		</g>
 	)

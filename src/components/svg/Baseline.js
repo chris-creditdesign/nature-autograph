@@ -4,7 +4,7 @@ const Baseline = ({ scales, margins, svgDimensions }) => {
 	
 	const { width } = svgDimensions
 	const { yScale } = scales
-	const { top, left, right } = margins
+	const { top, headlineHeight, left, right } = margins
 
 	const solidStyle = {
 			stroke: "#000000",
@@ -14,7 +14,7 @@ const Baseline = ({ scales, margins, svgDimensions }) => {
 	}
 
 	return (
-		<g className="baseline" transform={`translate(${left},${top})`}>
+		<g className="baseline" transform={`translate(${left},${top + headlineHeight})`}>
 			{ yScale.ticks().map( (elem, i) => {
 					return i !== 0 ? 
 						null : 

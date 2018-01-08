@@ -1,6 +1,6 @@
 {
 	"headline": "Headline",
-	"standfirst": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"standfirst": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.",
 	"chartType": "vertical-bar",
 	"data": [
 		{ "title": "Terminator", "value": 21, "year": 1984 },

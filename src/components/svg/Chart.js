@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { scaleLinear, scaleBand } from 'd3-scale'
 
+import Headline from './Headline'
+import Standfirst from './Standfirst'
 import YAxis from './YAxis'
 import XAxis from './XAxis'
 import Bars from './Bars'
@@ -17,7 +19,7 @@ class Chart extends Component {
 	}
 
 	render() {
-		const margins = {top: 50, right: 50, bottom: 50, left: 50}
+		const margins = {top: 50, headlineHeight: 100, right: 50, bottom: 50, left: 50}
 		const svgDimensions = {
 			width: 800,
 			height: 500
@@ -35,11 +37,13 @@ class Chart extends Component {
 			.range([svgDimensions.height - margins.bottom - margins.top, 0])
 
 		return (
-			<svg id="svg-chart" width={svgDimensions.width} height={svgDimensions.height}>
+			<svg id="svg-chart"
+				width={svgDimensions.width}
+				height={svgDimensions.height + margins.headlineHeight}>
 				<rect
 					className="svg-background"
 					width={svgDimensions.width}
-					height={svgDimensions.height}
+					height={svgDimensions.height + margins.headlineHeight}
 					fill={"#f6f5ee"}
 					x={0} y={0} >
 				</rect>
@@ -49,8 +53,19 @@ class Chart extends Component {
 					width={svgDimensions.width - margins.right - margins.left}
 					height={svgDimensions.height - margins.top - margins.bottom }
 					fill={"#ffffff"}
-					x={margins.right} y={margins.top} >
+					x={margins.right} y={margins.top + margins.headlineHeight} >
 				</rect>
+
+				<Headline
+					margins={margins}
+					text={this.props.headline}
+				/>
+
+				<Standfirst
+					margins={margins}
+					svgDimensions={svgDimensions}
+					text={this.props.standfirst}
+				/>
 
 				<YAxis
 					scales={{ xScale, yScale }}

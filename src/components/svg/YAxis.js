@@ -5,7 +5,7 @@ const YAxis = ({ scales, margins, svgDimensions, formatString }) => {
 	
 	const { width } = svgDimensions
 	const { yScale } = scales
-	const { top, left, right } = margins
+	const { top, headlineHeight, left, right } = margins
 	const percentage = format(formatString)
 
 	const dottedStyle = {
@@ -45,7 +45,7 @@ const YAxis = ({ scales, margins, svgDimensions, formatString }) => {
 				)
 
 	return (
-		<g className="yAxis" transform={`translate(${left},${top})`}>
+		<g className="yAxis" transform={`translate(${left},${top + headlineHeight})`}>
 			<g className="yTicks">
 				{ticks}
 			</g>

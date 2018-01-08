@@ -44,6 +44,7 @@ const Controls = (props) => {
 
 				<TextInput 
 					legend="Standfirst"
+					rows={5}
 					defaultValue={props.standfirst}
 					onChange={(e) => props.onStandfirstChange(e.target.value)}
 				/>
