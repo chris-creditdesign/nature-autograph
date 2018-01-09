@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Baseline = ({ xScale, dimensions }) => {
+const Baseline = ({ xScale, graphicDimensions }) => {
 
-	const { height } = dimensions
+	const { height } = graphicDimensions
 
 	const solidStyle = {
 		stroke: "#000000",

@@ -8,7 +8,7 @@ class Standfirst extends Component {
 	}
 
 	checkStandfirstHeight() {
-		if (this.props.margins.standfirstHeight !== this.textElement.getBBox().height) {
+		if (this.props.svgMargins.standfirstHeight !== this.textElement.getBBox().height) {
 			this.props.onStandfirstHeightChange(this.textElement.getBBox().height)
 		}		
 	}
@@ -33,8 +33,8 @@ class Standfirst extends Component {
 				{this.props.text.split(/\r?\n/g).map( (text,i) => 
 					<tspan
 						key={i}
-						x={this.props.margins.right}
-						y={this.props.margins.top + this.props.margins.headlineHeight + (i * 20)} >
+						x={this.props.svgMargins.right}
+						y={this.props.svgMargins.top + this.props.svgMargins.headlineHeight + (i * 20)} >
 						{text}
 					</tspan>
 				)}

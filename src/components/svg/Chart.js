@@ -10,32 +10,36 @@ class Chart extends Component {
 	render() {
 
 		const graphicDimensions = {
-			width: this.props.svgDimensions.width - this.props.margins.left - this.props.margins.yAxisWidth - this.props.margins.right,
-			height: this.props.svgDimensions.height- this.props.margins.top - this.props.margins.headlineHeight - this.props.margins.standfirstHeight - this.props.margins.xAxisHeight - this.props.margins.bottom
+			width: this.props.svgDimensions.width - this.props.svgMargins.left - this.props.svgMargins.yAxisWidth - this.props.svgMargins.right,
+			height: this.props.svgDimensions.height- this.props.svgMargins.top - this.props.svgMargins.headlineHeight - this.props.svgMargins.standfirstHeight - this.props.svgMargins.xAxisHeight - this.props.svgMargins.bottom
 		}
 
 		const graphicMargins = {
-			top: this.props.margins.top + this.props.margins.headlineHeight + this.props.margins.standfirstHeight,
-			bottom: this.props.margins.bottom + this.props.margins.xAxisHeight,
-			left: this.props.margins.left + this.props.margins.yAxisWidth,
-			right: this.props.margins.right
+			top: this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight,
+			bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisHeight,
+			left: this.props.svgMargins.left + this.props.svgMargins.yAxisWidth + 10,
+			right: this.props.svgMargins.right
 		}
 
 		let chart = null
 		switch (this.props.chartType) {
 			case "vertical-bar":
 				chart = (<VerticalBarChart
-							margins={graphicMargins}
-							dimensions={graphicDimensions}
+							graphicMargins={graphicMargins}
+							graphicDimensions={graphicDimensions}
+							svgMargins={this.props.svgMargins}
 							data={this.props.data}
+							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 						/>)
 				break
 
 			case "horizontal-bar":
 				chart = (<HorizontalBarChart
-							margins={graphicMargins}
-							dimensions={graphicDimensions}
+							graphicMargins={graphicMargins}
+							graphicDimensions={graphicDimensions}
+							svgMargins={this.props.svgMargins}
 							data={this.props.data}
+							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 						/>)
 				break
 
@@ -100,13 +104,13 @@ class Chart extends Component {
 
 
 				<Headline
-					margins={this.props.margins}
+					svgMargins={this.props.svgMargins}
 					text={this.props.headline}
 					onHeadlineHeightChange={(value) => this.props.onHeadlineHeightChange(value)}
 				/>
 
 				<Standfirst
-					margins={this.props.margins}
+					svgMargins={this.props.svgMargins}
 					svgDimensions={this.props.svgDimensions}
 					text={this.props.standfirst}
 					onStandfirstHeightChange={(value) => this.props.onStandfirstHeightChange(value)}

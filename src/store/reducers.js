@@ -57,27 +57,27 @@ export const errors = (state=[], action) => {
 }
 
 export const svgDimensions = (state=initialState.svgDimensions, action) =>
-	action.type === C.CHANGE_SVGDIMENSIONS ?
+	action.type === C.CHANGE_SVG_DIMENSIONS ?
 		action.payload :
 		state
 
 export const top = (state=50, action) =>
-	action.type === C.CHANGE_MARGIN_TOP ?
+	action.type === C.CHANGE_SVG_MARGIN_TOP ?
 		action.payload :
 		state
 
 export const bottom = (state=50, action) =>
-	action.type === C.CHANGE_MARGIN_BOTTOM ?
+	action.type === C.CHANGE_SVG_MARGIN_BOTTOM ?
 		action.payload :
 		state
 
 export const left = (state=50, action) =>
-	action.type === C.CHANGE_MARGIN_LEFT ?
+	action.type === C.CHANGE_SVG_MARGIN_LEFT ?
 		action.payload :
 		state
 
 export const right = (state=50, action) =>
-	action.type === C.CHANGE_MARGIN_RIGHT ?
+	action.type === C.CHANGE_SVG_MARGIN_RIGHT ?
 		action.payload :
 		state
 
@@ -109,7 +109,7 @@ export default combineReducers({
 	source,
 	footnote,
 	errors,
-	margins: combineReducers({
+	svgMargins: combineReducers({
 		top,
 		bottom,
 		left,

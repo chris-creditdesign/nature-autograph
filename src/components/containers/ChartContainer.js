@@ -8,7 +8,7 @@ const mapStateToProps = (state, props) =>
 		standfirst: state.standfirst,
 		chartType: state.chartType,
 		data: state.data,
-		margins: state.margins,
+		svgMargins: state.svgMargins,
 		svgDimensions: state.svgDimensions
 	})
 

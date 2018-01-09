@@ -8,7 +8,7 @@ class Headline extends Component {
 	}
 
 	checkHeadlineHeight() {
-		if (this.props.margins.headlineHeight !== this.textElement.getBBox().height) {
+		if (this.props.svgMargins.headlineHeight !== this.textElement.getBBox().height) {
 			this.props.onHeadlineHeightChange(this.textElement.getBBox().height)
 		}		
 	}
@@ -33,8 +33,8 @@ class Headline extends Component {
 		return (
 			<text
 				ref={text => this.textElement = text}
-				x={this.props.margins.right}
-				y={this.props.margins.top} 
+				x={this.props.svgMargins.right}
+				y={this.props.svgMargins.top} 
 				style={headlineStyle}>
 				{this.props.text}
 			</text>

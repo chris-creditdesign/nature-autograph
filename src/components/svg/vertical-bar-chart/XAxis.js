@@ -1,8 +1,8 @@
 import React from 'react'
 
-const XAxis = ({ xScale, dimensions, data }) => {
+const XAxis = ({ xScale, graphicDimensions, data }) => {
 
-	const { height } = dimensions
+	const { height } = graphicDimensions
 
 	const smallTickStyle = {
 			stroke: "#000000",

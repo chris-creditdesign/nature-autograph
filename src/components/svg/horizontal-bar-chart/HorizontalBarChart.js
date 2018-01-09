@@ -20,22 +20,22 @@ class HorizontalBarChart extends Component {
 
 		this.xScale
 			.domain([0, maxValue])
-			.range([0, this.props.dimensions.width])
+			.range([0, this.props.graphicDimensions.width])
 
 		this.yScale
 			.padding(0.5)
 			.domain(this.props.data.map(d => d.title))
-			.range([this.props.dimensions.height, 0])
+			.range([this.props.graphicDimensions.height, 0])
 
 		return (
-			<g transform={`translate(${this.props.margins.left},${this.props.margins.top})`}>
+			<g transform={`translate(${this.props.graphicMargins.left},${this.props.graphicMargins.top})`}>
 				<Whitebox
-					dimensions={this.props.dimensions}
+					graphicDimensions={this.props.graphicDimensions}
 				/>
 
 				<XAxis
 					xScale={this.xScale}
-					dimensions={this.props.dimensions}
+					graphicDimensions={this.props.graphicDimensions}
 					data={this.props.data}
 					formatString={""}
 				/>
@@ -43,18 +43,19 @@ class HorizontalBarChart extends Component {
 				<Bars
 					yScale={this.yScale}
 					xScale={this.xScale}
-					margins={this.props.margins}
 					data={this.props.data}
 				/>
 
 				<YAxis
 					yScale={this.yScale}
 					data={this.props.data}
+					svgMargins={this.props.svgMargins}
+					onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 				/>
 
 				<Baseline
 					xScale={this.xScale}
-					dimensions={this.props.dimensions}
+					graphicDimensions={this.props.graphicDimensions}
 				/>
 			</g>
 

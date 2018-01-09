@@ -1,9 +1,9 @@
 import React from 'react'
 import { format } from 'd3-format'
 
-const XAxis = ({ xScale, dimensions, data, formatString }) => {
+const XAxis = ({ xScale, graphicDimensions, data, formatString }) => {
 
-	const { height } = dimensions
+	const { height } = graphicDimensions
 	const percentage = format(formatString)
 
 	const dottedStyle = {

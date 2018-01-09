@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Bars = ({ xScale, yScale, data, dimensions }) => {
+const Bars = ({ xScale, yScale, data, graphicDimensions }) => {
 
-	const { height } = dimensions
+	const { height } = graphicDimensions
 
 	const bars = (
 		data.map(datum => 
