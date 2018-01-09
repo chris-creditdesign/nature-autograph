@@ -53,6 +53,8 @@ class VerticalBarChart extends Component {
 					xScale={this.xScale}
 					graphicDimensions={this.props.graphicDimensions}
 					data={this.props.data}
+					svgMargins={this.props.svgMargins}
+					onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
 				/>
 
 				<Baseline

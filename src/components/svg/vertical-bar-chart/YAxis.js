@@ -10,7 +10,7 @@ class YAxis extends Component {
 
 	checkYAxisWidth() {
 		if(this.props.svgMargins.yAxisWidth !== this.labelGroup.getBBox().width) {
-			this.props.onYAxisWidthChange(this.labelGroup.getBBox().width)
+			this.props.onYAxisWidthChange(Math.round(this.labelGroup.getBBox().width))
 		}
 	}
 

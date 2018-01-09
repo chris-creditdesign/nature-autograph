@@ -38,6 +38,8 @@ class HorizontalBarChart extends Component {
 					graphicDimensions={this.props.graphicDimensions}
 					data={this.props.data}
 					formatString={""}
+					svgMargins={this.props.svgMargins}
+					onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
 				/>
 
 				<Bars

@@ -9,16 +9,16 @@ class Chart extends Component {
 
 	render() {
 
-		const graphicDimensions = {
-			width: this.props.svgDimensions.width - this.props.svgMargins.left - this.props.svgMargins.yAxisWidth - this.props.svgMargins.right,
-			height: this.props.svgDimensions.height- this.props.svgMargins.top - this.props.svgMargins.headlineHeight - this.props.svgMargins.standfirstHeight - this.props.svgMargins.xAxisHeight - this.props.svgMargins.bottom
-		}
-
 		const graphicMargins = {
 			top: this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight,
-			bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisHeight,
+			bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisHeight + 10,
 			left: this.props.svgMargins.left + this.props.svgMargins.yAxisWidth + 10,
 			right: this.props.svgMargins.right
+		}
+
+		const graphicDimensions = {
+			width: this.props.svgDimensions.width - graphicMargins.left - graphicMargins.right,
+			height: this.props.svgDimensions.height - graphicMargins.top - graphicMargins.bottom
 		}
 
 		let chart = null
@@ -30,6 +30,7 @@ class Chart extends Component {
 							svgMargins={this.props.svgMargins}
 							data={this.props.data}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
+							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
 						/>)
 				break
 
@@ -40,6 +41,7 @@ class Chart extends Component {
 							svgMargins={this.props.svgMargins}
 							data={this.props.data}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
+							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
 						/>)
 				break
 
