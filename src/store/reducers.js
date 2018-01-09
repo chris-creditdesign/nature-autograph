@@ -13,7 +13,7 @@ export const standfirst = (state=initialState.standfirst, action) =>
 		state
 
 export const chartType = (state=initialState.chartType, action) =>
-	action.type === C.SET_CHART_TYPE ?
+	action.type === C.CHANGE_CHART_TYPE ?
 		action.payload :
 		state
 
@@ -91,6 +91,16 @@ export const standfirstHeight = (state=36, action) =>
 		action.payload :
 		state
 
+export const yAxisWidth = (state=30, action) =>
+	action.type === C.CHANGE_YAXIS_WIDTH ?
+		action.payload :
+		state
+
+export const xAxisHeight = (state=36, action) => 
+	action.type === C.CHANGE_XAXIS_HEIGHT ?
+		action.payload :
+		state
+
 export default combineReducers({
 	headline,
 	standfirst,
@@ -105,7 +115,9 @@ export default combineReducers({
 		left,
 		right,
 		headlineHeight,
-		standfirstHeight
+		standfirstHeight,
+		yAxisWidth,
+		xAxisHeight
 	}),
 	svgDimensions
 })

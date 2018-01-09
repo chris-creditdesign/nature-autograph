@@ -1,10 +1,9 @@
 import React from 'react'
 import { format } from 'd3-format'
 
-const YAxis = ({ yScale, margins, svgDimensions, formatString }) => {
+const YAxis = ({ yScale, dimensions, formatString }) => {
 	
-	const { width } = svgDimensions
-	const { top, headlineHeight, standfirstHeight, left, right } = margins
+	const { width } = dimensions
 	const percentage = format(formatString)
 
 	const dottedStyle = {
@@ -15,6 +14,7 @@ const YAxis = ({ yScale, margins, svgDimensions, formatString }) => {
 	}
 
 	const textStyle = {
+		fontFamily: "NewsGothicMTOT-Regular",
 		textAnchor: "end"
 	}
 
@@ -24,14 +24,14 @@ const YAxis = ({ yScale, margins, svgDimensions, formatString }) => {
 							(<line
 								x1={-5}
 								y1={yScale(elem)}
-								x2={width - left - right}
+								x2={width}
 								y2={yScale(elem)}
 								style={dottedStyle}
 								key={i}
 							/>)
 					})
 
-	const text = yScale.ticks().map( (elem, i) => 
+	const labels = yScale.ticks().map( (elem, i) => 
 					<text
 						x={-10}
 						y={yScale(elem)}
@@ -44,12 +44,12 @@ const YAxis = ({ yScale, margins, svgDimensions, formatString }) => {
 				)
 
 	return (
-		<g className="yAxis" transform={`translate(${left},${top + headlineHeight + standfirstHeight})`}>
+		<g className="yAxis">
 			<g className="yTicks">
 				{ticks}
 			</g>
 			<g className="yLabels">
-				{text}
+				{labels}
 			</g>
 		</g>
 	);

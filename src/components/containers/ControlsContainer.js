@@ -5,7 +5,8 @@ import * as actions from '../../actions'
 const mapStateToProps = (state, props) =>
 	({
 		headline: state.headline,
-		standfirst: state.standfirst
+		standfirst: state.standfirst,
+		chartType: state.chartType
 	})
 
 const mapDispatchToProps = (dispatch) =>
@@ -18,6 +19,11 @@ const mapDispatchToProps = (dispatch) =>
 		onStandfirstChange(value) {
 			dispatch(
 				actions.changeStandfirst(value)
+			)
+		},
+		onChartTypeChange(value) {
+			dispatch(
+				actions.changeChartType(value)
 			)
 		}
 	})

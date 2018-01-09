@@ -1,43 +1,89 @@
 import React, { Component } from 'react'
-import { scaleLinear, scaleBand } from 'd3-scale'
 
-import Headline from './Headline'
-import Standfirst from './Standfirst'
-import YAxis from './YAxis'
-import XAxis from './XAxis'
-import Bars from './Bars'
-import Baseline from './Baseline'
+import Headline from './shared/Headline'
+import Standfirst from './shared/Standfirst'
+import VerticalBarChart from './vertical-bar-chart/VerticalBarChart'
+import HorizontalBarChart from './horizontal-bar-chart/HorizontalBarChart'
 
 class Chart extends Component {
 
-	constructor(props) {
-		super(props)
-
-		this.xScale = scaleBand()
-		this.yScale = scaleLinear()
-	}
-
 	render() {
-		const maxValue = Math.max(...this.props.data.map(d => d.value))
 
-		const graphicWidth = this.props.svgDimensions.width
-							- this.props.margins.right
-							- this.props.margins.left
+		const graphicDimensions = {
+			width: this.props.svgDimensions.width - this.props.margins.left - this.props.margins.yAxisWidth - this.props.margins.right,
+			height: this.props.svgDimensions.height- this.props.margins.top - this.props.margins.headlineHeight - this.props.margins.standfirstHeight - this.props.margins.xAxisHeight - this.props.margins.bottom
+		}
 
-		const graphicHeight = this.props.svgDimensions.height 
-							- this.props.margins.top
-							- this.props.margins.bottom 
-							- this.props.margins.headlineHeight
-							- this.props.margins.standfirstHeight
+		const graphicMargins = {
+			top: this.props.margins.top + this.props.margins.headlineHeight + this.props.margins.standfirstHeight,
+			bottom: this.props.margins.bottom + this.props.margins.xAxisHeight,
+			left: this.props.margins.left + this.props.margins.yAxisWidth,
+			right: this.props.margins.right
+		}
 
-		this.xScale
-			.padding(0.5)
-			.domain(this.props.data.map(d => d.title))
-			.range([0, graphicWidth])
+		let chart = null
+		switch (this.props.chartType) {
+			case "vertical-bar":
+				chart = (<VerticalBarChart
+							margins={graphicMargins}
+							dimensions={graphicDimensions}
+							data={this.props.data}
+						/>)
+				break
 
-		this.yScale
-			.domain([0, maxValue])
-			.range([graphicHeight, 0])
+			case "horizontal-bar":
+				chart = (<HorizontalBarChart
+							margins={graphicMargins}
+							dimensions={graphicDimensions}
+							data={this.props.data}
+						/>)
+				break
+
+			case "grouped-bar":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be a grouped bar chart
+						</text>)
+				break
+
+			case "stacked-bar":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be a stacked bar chart
+						</text>)
+				break
+
+			case "line":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be a line chart
+						</text>)
+				break
+
+			case "area":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be an area bar chart
+						</text>)
+				break
+
+			case "horizontal-proportion-bar":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be a horizontal proportion bar chart
+						</text>)
+				break
+
+			case "vertical-proportion-bar":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be a vertical proportion bar chart
+						</text>)
+				break
+
+			case "pie":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be a horizontal bar chart
+						</text>)
+				break
+
+			default:
+				chart = null;
+		}
 
 		return (
 			<svg id="svg-chart"
@@ -52,16 +98,6 @@ class Chart extends Component {
 					x={0} y={0} >
 				</rect>
 
-				<rect
-					className="svg-whitebox"
-					width={graphicWidth}
-					height={graphicHeight}
-					fill={"#ffffff"}
-					x={this.props.margins.right}
-					y={this.props.margins.top 
-						+ this.props.margins.headlineHeight
-						+ this.props.margins.standfirstHeight} >
-				</rect>
 
 				<Headline
 					margins={this.props.margins}
@@ -76,36 +112,8 @@ class Chart extends Component {
 					onStandfirstHeightChange={(value) => this.props.onStandfirstHeightChange(value)}
 				/>
 
-				<YAxis
-					yScale={this.yScale}
-					margins={this.props.margins}
-					headlineHeight={this.props.headlineHeight}
-					standfirstHeight={this.props.standfirstHeight}
-					svgDimensions={this.props.svgDimensions}
-					formatString={""}
-				/>
+				{chart}
 
-				<Bars
-					yScale={this.yScale}
-					xScale={this.xScale}
-					margins={this.props.margins}
-					data={this.props.data}
-					svgDimensions={this.props.svgDimensions}
-				/>
-
-				<XAxis
-					xScale={this.xScale}
-					margins={this.props.margins}
-					svgDimensions={this.props.svgDimensions}
-					data={this.props.data}
-				/>
-
-				<Baseline
-					yScale={this.yScale}
-					xScale={this.xScale}
-					margins={this.props.margins}
-					svgDimensions={this.props.svgDimensions}
-				/>
 			</svg>
 		)
 	}

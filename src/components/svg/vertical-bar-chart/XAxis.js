@@ -1,9 +1,8 @@
 import React from 'react'
 
-const XAxis = ({ xScale, margins, svgDimensions, data }) => {
+const XAxis = ({ xScale, dimensions, data }) => {
 
-	const { height } = svgDimensions
-	const { left, bottom } = margins
+	const { height } = dimensions
 
 	const smallTickStyle = {
 			stroke: "#000000",
@@ -13,6 +12,7 @@ const XAxis = ({ xScale, margins, svgDimensions, data }) => {
 	}
 
 	const textStyle = {
+		fontFamily: "NewsGothicMTOT-Regular",
 		textAnchor: "middle"
 	}
 
@@ -40,7 +40,7 @@ const XAxis = ({ xScale, margins, svgDimensions, data }) => {
 			)
 
 	return (
-		<g className="xAxis" transform={`translate(${left},${height - bottom})`}>
+		<g className="xAxis" transform={`translate(${0},${height})`}>
 			<g className="xTicks">
 				{ticks}
 			</g>

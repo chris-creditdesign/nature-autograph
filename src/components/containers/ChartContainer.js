@@ -6,6 +6,7 @@ const mapStateToProps = (state, props) =>
 	({
 		headline: state.headline,
 		standfirst: state.standfirst,
+		chartType: state.chartType,
 		data: state.data,
 		margins: state.margins,
 		svgDimensions: state.svgDimensions
@@ -21,6 +22,16 @@ const mapDispatchToProps = (dispatch) =>
 		onStandfirstHeightChange(value) {
 			dispatch(
 				actions.changeStandfirstHeight(value)
+			)
+		},
+		onYAxisWidthChange(value) {
+			dispatch(
+				actions.changeYAxisWidth(value)
+			)
+		},
+		onXAxisHeightChange(value) {
+			dispatch(
+				actions.changeXAxisHeight(value)
 			)
 		}
 	})

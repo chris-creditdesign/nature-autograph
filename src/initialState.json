@@ -19,12 +19,14 @@
 	"footnote": "Footnote",
 	"errors": [],
 	"margins": {
-		"top": 50,
-		"right": 50,
-		"bottom": 50,
-		"left": 50,
+		"top": 40,
+		"right": 20,
+		"bottom": 20,
+		"left": 20,
 		"headlineHeight": 30,
-		"standfirstHeight": 36
+		"standfirstHeight": 36,
+		"yAxisWidth": 30,
+		"xAxisHeight": 30
 	},
 	"svgDimensions": {
 		"width": 800,

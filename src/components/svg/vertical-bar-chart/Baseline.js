@@ -1,9 +1,8 @@
 import React from 'react'
 
-const Baseline = ({ yScale, margins, svgDimensions }) => {
+const Baseline = ({ yScale, dimensions }) => {
 	
-	const { width } = svgDimensions
-	const { top, headlineHeight, standfirstHeight, left, right } = margins
+	const { width } = dimensions
 
 	const solidStyle = {
 			stroke: "#000000",
@@ -13,14 +12,14 @@ const Baseline = ({ yScale, margins, svgDimensions }) => {
 	}
 
 	return (
-		<g className="baseline" transform={`translate(${left},${top + headlineHeight + standfirstHeight})`}>
+		<g className="baseline">
 			{ yScale.ticks().map( (elem, i) => {
 					return i !== 0 ? 
 						null : 
 						(<line
 							x1={-5}
 							y1={yScale(elem)}
-							x2={width - left - right}
+							x2={width}
 							y2={yScale(elem)}
 							style={solidStyle}
 							key={i}

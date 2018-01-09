@@ -23,7 +23,7 @@ const Controls = (props) => {
 					type="radio"
 					name="chartChoice"
 					value={elem} 
-					defaultChecked={i === 0 ? true : false}
+					defaultChecked={elem === props.chartType ? true : false}
 
 					/>
 					{`${elem.split("-").join(" ")} chart`}
@@ -49,7 +49,7 @@ const Controls = (props) => {
 					onChange={(e) => props.onStandfirstChange(e.target.value)}
 				/>
 
-				<fieldset>
+				<fieldset onChange={(e) => props.onChartTypeChange(e.target.value)}>
 					<legend>Type of chart:</legend>
 					<ul>
 						{chartTypeRadios}
