@@ -5,6 +5,8 @@ import YAxis from './YAxis'
 import Bars from './Bars'
 import XAxis from './XAxis'
 import Baseline from './Baseline'
+import XAxisLegend from '../shared/XAxisLegend'
+import YAxisLegend from '../shared/YAxisLegend'
 
 class HorizontalBarChart extends Component {
 
@@ -24,7 +26,7 @@ class HorizontalBarChart extends Component {
 
 		this.yScale
 			.padding(0.5)
-			.domain(this.props.data.map(d => d.title))
+			.domain(this.props.data.map(d => d.title).reverse())
 			.range([this.props.graphicDimensions.height, 0])
 
 		return (
@@ -58,6 +60,22 @@ class HorizontalBarChart extends Component {
 				<Baseline
 					xScale={this.xScale}
 					graphicDimensions={this.props.graphicDimensions}
+				/>
+
+				<XAxisLegend 
+					graphicDimensions={this.props.graphicDimensions}
+					graphicMargins={this.props.graphicMargins}
+					svgMargins={this.props.svgMargins}
+					xAxisLegend={this.props.xAxisLegend}
+					onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
+				/>
+
+				<YAxisLegend 
+					graphicDimensions={this.props.graphicDimensions}
+					graphicMargins={this.props.graphicMargins}
+					svgMargins={this.props.svgMargins}
+					yAxisLegend={this.props.yAxisLegend}
+					onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 				/>
 			</g>
 

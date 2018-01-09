@@ -9,7 +9,7 @@ class Headline extends Component {
 
 	checkHeadlineHeight() {
 		if (this.props.svgMargins.headlineHeight !== this.textElement.getBBox().height) {
-			this.props.onHeadlineHeightChange(this.textElement.getBBox().height)
+			this.props.onHeadlineHeightChange(Math.round(this.textElement.getBBox().height))
 		}		
 	}
 

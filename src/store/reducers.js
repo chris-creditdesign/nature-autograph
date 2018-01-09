@@ -12,6 +12,16 @@ export const standfirst = (state=initialState.standfirst, action) =>
 		action.payload :
 		state
 
+export const xAxisLegend = (state=initialState.xAxisLegend, action) => 
+	action.type === C.CHANGE_XAXIS_LEGEND ?
+		action.payload :
+		state
+
+export const yAxisLegend = (state=initialState.yAxisLegend, action) =>
+	action.type === C.CHANGE_YAXIS_LEGEND ?
+		action.payload :
+		state
+
 export const chartType = (state=initialState.chartType, action) =>
 	action.type === C.CHANGE_CHART_TYPE ?
 		action.payload :
@@ -91,19 +101,31 @@ export const standfirstHeight = (state=36, action) =>
 		action.payload :
 		state
 
+export const xAxisHeight = (state=36, action) => 
+	action.type === C.CHANGE_XAXIS_HEIGHT ?
+		action.payload :
+		state
+
 export const yAxisWidth = (state=30, action) =>
 	action.type === C.CHANGE_YAXIS_WIDTH ?
 		action.payload :
 		state
 
-export const xAxisHeight = (state=36, action) => 
-	action.type === C.CHANGE_XAXIS_HEIGHT ?
+export const yAxisLegendWidth = (state=30, action) =>
+	action.type === C.CHANGE_YAXIS_LEGEND_WIDTH ?
+		action.payload :
+		state
+
+export const xAxisLegendHeight = (state=30, action) => 
+	action.type === C.CHANGE_XAXIS_LEGEND_HEIGHT ?
 		action.payload :
 		state
 
 export default combineReducers({
 	headline,
 	standfirst,
+	xAxisLegend,
+	yAxisLegend,
 	chartType,
 	data,
 	source,
@@ -116,8 +138,10 @@ export default combineReducers({
 		right,
 		headlineHeight,
 		standfirstHeight,
+		xAxisHeight,
 		yAxisWidth,
-		xAxisHeight
+		xAxisLegendHeight,
+		yAxisLegendWidth
 	}),
 	svgDimensions
 })

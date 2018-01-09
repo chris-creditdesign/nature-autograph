@@ -56,6 +56,20 @@ const Controls = (props) => {
 					</ul>
 				</fieldset>
 
+				<TextInput 
+					legend="X Axis legend (can be multi-line)"
+					rows={2}
+					defaultValue={props.xAxisLegend}
+					onChange={(e) => props.onXAxisLegendChange(e.target.value)}
+				/>
+
+				<TextInput 
+					legend="Y Axis legend (can be multi-line)"
+					rows={2}
+					defaultValue={props.yAxisLegend}
+					onChange={(e) => props.onYAxisLegendChange(e.target.value)}
+				/>
+
 			</form>
 
 			<DownloadChart />

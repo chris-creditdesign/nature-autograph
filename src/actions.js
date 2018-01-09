@@ -41,3 +41,44 @@ export const changeXAxisHeight = (xAxisHeight=36) =>
 		type: C.CHANGE_XAXIS_HEIGHT,
 		payload: xAxisHeight
 	})
+
+export const changeXAxisLegend = (xAxisLegend="X Axis Legend") =>
+	({
+		type: C.CHANGE_XAXIS_LEGEND,
+		payload: xAxisLegend
+	})
+
+export const changeYAxisLegend = (yAxisLegend="Y Axis Legend") =>
+	({
+		type: C.CHANGE_YAXIS_LEGEND,
+		payload: yAxisLegend
+	})
+
+export const changeXAxisLegendHeight = (xAxisLegendHeight=30) =>
+	({
+		type: C.CHANGE_XAXIS_LEGEND_HEIGHT,
+		payload: xAxisLegendHeight
+	})
+
+export const changeYAxisLegendWidth = (yAxisLegendWidth=30) =>
+	({
+		type: C.CHANGE_YAXIS_LEGEND_WIDTH,
+		payload: yAxisLegendWidth
+	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

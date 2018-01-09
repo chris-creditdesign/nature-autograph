@@ -5,6 +5,8 @@ import YAxis from './YAxis'
 import Bars from './Bars'
 import XAxis from './XAxis'
 import Baseline from './Baseline'
+import XAxisLegend from '../shared/XAxisLegend'
+import YAxisLegend from '../shared/YAxisLegend'
 
 class VerticalBarChart extends Component {
 
@@ -60,6 +62,22 @@ class VerticalBarChart extends Component {
 				<Baseline
 					yScale={this.yScale}
 					graphicDimensions={this.props.graphicDimensions}
+				/>
+
+				<XAxisLegend 
+					graphicDimensions={this.props.graphicDimensions}
+					graphicMargins={this.props.graphicMargins}
+					svgMargins={this.props.svgMargins}
+					xAxisLegend={this.props.xAxisLegend}
+					onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
+				/>
+
+				<YAxisLegend 
+					graphicDimensions={this.props.graphicDimensions}
+					graphicMargins={this.props.graphicMargins}
+					svgMargins={this.props.svgMargins}
+					yAxisLegend={this.props.yAxisLegend}
+					onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 				/>
 			</g>
 		)

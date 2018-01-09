@@ -6,7 +6,9 @@ const mapStateToProps = (state, props) =>
 	({
 		headline: state.headline,
 		standfirst: state.standfirst,
-		chartType: state.chartType
+		chartType: state.chartType,
+		xAxisLegend: state.xAxisLegend,
+		yAxisLegend: state.yAxisLegend
 	})
 
 const mapDispatchToProps = (dispatch) =>
@@ -25,7 +27,18 @@ const mapDispatchToProps = (dispatch) =>
 			dispatch(
 				actions.changeChartType(value)
 			)
+		},
+		onXAxisLegendChange(value) {
+			dispatch(
+				actions.changeXAxisLegend(value)
+			)
+		},
+		onYAxisLegendChange(value) {
+			dispatch(
+				actions.changeYAxisLegend(value)
+			)
 		}
+
 	})
 
 const ControlsContainer = connect(mapStateToProps, mapDispatchToProps)(Controls)

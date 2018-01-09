@@ -13,7 +13,12 @@ const initialState = localStorage["nature-autograph"] ?
 const saveState = () =>
 	localStorage["nature-autograph"] = JSON.stringify(store.getState())
 
-const store = createStore(appReducer, initialState)
+const store = createStore(
+		appReducer,
+		initialState,
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+		)
+
 store.subscribe(saveState)
 
 window.store = store

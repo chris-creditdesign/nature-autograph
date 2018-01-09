@@ -1,19 +1,21 @@
 {
 	"headline": "Headline",
 	"standfirst": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.",
+	"xAxisLegend": "X axis legend",
+	"yAxisLegend": "Y axis legend",
 	"chartType": "vertical-bar",
 	"data": [
-		{ "title": "Terminator", "value": 21, "year": 1984 },
-		{ "title": "Commando", "value": 81, "year": 1985 },
-		{ "title": "Predator", "value": 25, "year": 1987 },
-		{ "title": "Raw Deal", "value": 26, "year": 1986 },
-		{ "title": "The Running Man", "value": 11, "year": 1987 },
-		{ "title": "Total Recall", "value": 44, "year": 1990 },
-		{ "title": "Terminator 2", "value": 0, "year": 1991 },
-		{ "title": "Last Action Hero", "value": 22, "year": 1993 },
-		{ "title": "True Lies", "value": 51, "year": 1994 },
-		{ "title": "Eraser", "value": 29, "year": 1996 },
-		{ "title": "Terminator 3", "value": 2, "year": 2003 }
+		{ "title": "A", "value": 21, "year": 1984 },
+		{ "title": "B", "value": 81, "year": 1985 },
+		{ "title": "C", "value": 25, "year": 1987 },
+		{ "title": "D", "value": 26, "year": 1986 },
+		{ "title": "E", "value": 11, "year": 1987 },
+		{ "title": "F", "value": 44, "year": 1990 },
+		{ "title": "G", "value": 0, "year": 1991 },
+		{ "title": "H", "value": 22, "year": 1993 },
+		{ "title": "I", "value": 51, "year": 1994 },
+		{ "title": "J", "value": 29, "year": 1996 },
+		{ "title": "K", "value": 2, "year": 2003 }
 	],
 	"source": "Source:",
 	"footnote": "Footnote",
@@ -26,7 +28,9 @@
 		"headlineHeight": 30,
 		"standfirstHeight": 36,
 		"yAxisWidth": 30,
-		"xAxisHeight": 30
+		"xAxisHeight": 30,
+		"yAxisLegendWidth": 30,
+		"xAxisLegendHeight": 30
 	},
 	"svgDimensions": {
 		"width": 800,
