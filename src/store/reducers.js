@@ -12,6 +12,21 @@ export const standfirst = (state=initialState.standfirst, action) =>
 		action.payload :
 		state
 
+export const data = (state=initialState.data, action) => 
+	action.type === C.CHANGE_DATA ?
+		action.payload :
+		state
+
+export const fileName = (state=initialState.fileName, action) =>
+	action.type === (C.CHANGE_FILE_NAME) ?
+		action.payload :
+		state
+
+export const columnList = (state=initialState.columnList, action) =>
+	action.type === (C.CHANGE_COLUMN_LIST) ?
+		action.payload :
+		state
+
 export const xAxisLegend = (state=initialState.xAxisLegend, action) => 
 	action.type === C.CHANGE_XAXIS_LEGEND ?
 		action.payload :
@@ -24,11 +39,6 @@ export const yAxisLegend = (state=initialState.yAxisLegend, action) =>
 
 export const chartType = (state=initialState.chartType, action) =>
 	action.type === C.CHANGE_CHART_TYPE ?
-		action.payload :
-		state
-
-export const data = (state=initialState.data, action) => 
-	action.type === C.CHANGE_DATA ?
 		action.payload :
 		state
 
@@ -124,10 +134,12 @@ export const xAxisLegendHeight = (state=30, action) =>
 export default combineReducers({
 	headline,
 	standfirst,
+	data,
+	fileName,
+	columnList,
 	xAxisLegend,
 	yAxisLegend,
 	chartType,
-	data,
 	source,
 	footnote,
 	errors,

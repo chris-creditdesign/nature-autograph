@@ -6,6 +6,9 @@ const mapStateToProps = (state, props) =>
 	({
 		headline: state.headline,
 		standfirst: state.standfirst,
+		data: state.data,
+		fileName: state.fileName,
+		columnList: state.columnList,
 		chartType: state.chartType,
 		xAxisLegend: state.xAxisLegend,
 		yAxisLegend: state.yAxisLegend
@@ -26,6 +29,16 @@ const mapDispatchToProps = (dispatch) =>
 		onDataChange(value) {
 			dispatch(
 				actions.changeData(value)
+			)
+		},
+		onFileNameChange(value) {
+			dispatch(
+				actions.changeFileName(value)
+			)
+		},
+		onColumnListChange(value) {
+			dispatch(
+				actions.changeColumnList(value)
 			)
 		},
 		onChartTypeChange(value) {

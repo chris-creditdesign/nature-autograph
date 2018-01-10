@@ -17,6 +17,8 @@
 		{ "title": "J", "value": 29, "year": 1996 },
 		{ "title": "K", "value": 2, "year": 2003 }
 	],
+	"fileName": "No file uploaded",
+	"columnList": ["title", "value"],
 	"source": "Source:",
 	"footnote": "Footnote",
 	"errors": [],

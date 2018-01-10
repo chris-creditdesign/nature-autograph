@@ -3,10 +3,10 @@ import ReactFileReader from 'react-file-reader'
 import { csv } from 'd3-request'
 
 
-const FileUpload = ({ onDataChange }) => {
+const FileUpload = ({ onDataChange, onFileNameChange, onColumnListChange }) => {
 
 	const handleFiles = files => {
-		console.log(files.fileList[0].name)
+		onFileNameChange(files.fileList[0].name)
 		csv(files.base64, callBack)
 	}
 
@@ -14,10 +14,9 @@ const FileUpload = ({ onDataChange }) => {
 		if (error){
 			throw error
 		}
-		console.log(data)
-		console.log(data.columns)
 
 		onDataChange(data)
+		onColumnListChange(data.columns)
 	}
 
 	return (

@@ -2,6 +2,7 @@ import React from 'react'
 import TextInput from './TextInput'
 import DownloadChart from './DownloadChart'
 import FileUpload from './FileUpload'
+import FilePreview from './FilePreview'
 
 const Controls = (props) => {
 
@@ -76,12 +77,21 @@ const Controls = (props) => {
 			<div>
 				<FileUpload 
 					onDataChange={(data) => props.onDataChange(data)}
+					onFileNameChange={(name) => props.onFileNameChange(name)}
+					onColumnListChange={(list) => props.onColumnListChange(list)}
 				/>
 			</div>
+
+			<FilePreview
+				data={props.data}
+				fileName={props.fileName}
+				columnList={props.columnList}
+			/>
 
 			<div>
 				<DownloadChart />
 			</div>
+
 		</div>
 
 	)

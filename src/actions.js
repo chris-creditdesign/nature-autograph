@@ -1,11 +1,5 @@
 import C from './constants'
 
-export const changeData = (data=[]) =>
-	({
-		type: C.CHANGE_DATA,
-		payload: data
-	})
-
 export const changeHeadline = (headline="Headline") =>
 	({
 		type: C.CHANGE_HEADLINE,
@@ -16,6 +10,24 @@ export const changeStandfirst = (standfirst="Standfirst") =>
 	({
 		type: C.CHANGE_STANDFIRST,
 		payload: standfirst
+	})
+
+export const changeData = (data=[]) =>
+	({
+		type: C.CHANGE_DATA,
+		payload: data
+	})
+
+export const changeFileName = (name="No file uploaded") =>
+	({
+		type: C.CHANGE_FILE_NAME,
+		payload: name
+	})
+
+export const changeColumnList = (list=[]) =>
+	({
+		type: C.CHANGE_COLUMN_LIST,
+		payload: list
 	})
 
 export const changeChartType = (chartType="vertical-bar") =>
