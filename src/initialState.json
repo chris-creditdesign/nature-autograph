@@ -27,10 +27,10 @@
 		"left": 20,
 		"headlineHeight": 30,
 		"standfirstHeight": 36,
-		"yAxisWidth": 30,
-		"xAxisHeight": 30,
-		"yAxisLegendWidth": 30,
-		"xAxisLegendHeight": 30
+		"yAxisWidth": 20,
+		"xAxisHeight": 16,
+		"yAxisLegendWidth": 16,
+		"xAxisLegendHeight": 16
 	},
 	"svgDimensions": {
 		"width": 800,

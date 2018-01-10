@@ -1,6 +1,7 @@
 import React from 'react'
 import TextInput from './TextInput'
 import DownloadChart from './DownloadChart'
+import FileUpload from './FileUpload'
 
 const Controls = (props) => {
 
@@ -32,7 +33,7 @@ const Controls = (props) => {
 	)
 
 	return (
-		<div>
+		<div className="controls">
 
 			<form>
 
@@ -72,7 +73,15 @@ const Controls = (props) => {
 
 			</form>
 
-			<DownloadChart />
+			<div>
+				<FileUpload 
+					onDataChange={(data) => props.onDataChange(data)}
+				/>
+			</div>
+
+			<div>
+				<DownloadChart />
+			</div>
 		</div>
 
 	)

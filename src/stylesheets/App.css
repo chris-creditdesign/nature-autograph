@@ -2,6 +2,11 @@ body {
   font-family: helvetica;
 }
 
-div {
+.controls {
 	display: inline-block;
+	margin-left: 10px;
+}
+
+.controls div {
+	margin: 10px 0;
 }

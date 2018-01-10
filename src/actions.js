@@ -1,5 +1,11 @@
 import C from './constants'
 
+export const changeData = (data=[]) =>
+	({
+		type: C.CHANGE_DATA,
+		payload: data
+	})
+
 export const changeHeadline = (headline="Headline") =>
 	({
 		type: C.CHANGE_HEADLINE,

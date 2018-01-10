@@ -23,6 +23,11 @@ const mapDispatchToProps = (dispatch) =>
 				actions.changeStandfirst(value)
 			)
 		},
+		onDataChange(value) {
+			dispatch(
+				actions.changeData(value)
+			)
+		},
 		onChartTypeChange(value) {
 			dispatch(
 				actions.changeChartType(value)
