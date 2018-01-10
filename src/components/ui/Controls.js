@@ -7,9 +7,9 @@ const Controls = (props) => {
 	const charTypes = [
 		"vertical-bar",
 		"horizontal-bar",
+		"line",
 		"grouped-bar",
 		"stacked-bar",
-		"line",
 		"area",
 		"horizontal-proportion-bar",
 		"vertical-proportion-bar",

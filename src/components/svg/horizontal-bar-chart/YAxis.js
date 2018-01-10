@@ -38,9 +38,9 @@ class YAxis extends Component {
 				<line
 					key={datum.title}
 					x1={0}
-					y1={this.props.yScale(datum.title) + (this.props.yScale.bandwidth() / 2)}
+					y1={this.props.yScale(datum.title)}
 					x2={-8}
-					y2={this.props.yScale(datum.title) + (this.props.yScale.bandwidth() / 2)}
+					y2={this.props.yScale(datum.title)}
 					style={smallTickStyle}
 				/>
 			)
@@ -49,7 +49,7 @@ class YAxis extends Component {
 				<text
 					key={datum.title}
 					x={-15}
-					y={this.props.yScale(datum.title) + (this.props.yScale.bandwidth() / 2)}
+					y={this.props.yScale(datum.title)}
 					dy={"0.3em"}
 					style={textStyle}
 				>

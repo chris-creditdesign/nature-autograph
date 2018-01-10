@@ -4,6 +4,7 @@ import Headline from './shared/Headline'
 import Standfirst from './shared/Standfirst'
 import VerticalBarChart from './vertical-bar-chart/VerticalBarChart'
 import HorizontalBarChart from './horizontal-bar-chart/HorizontalBarChart'
+import LineChart from './line-chart/LineChart'
 
 class Chart extends Component {
 
@@ -53,6 +54,21 @@ class Chart extends Component {
 						/>)
 				break
 
+			case "line":
+				chart = (<LineChart
+							graphicMargins={graphicMargins}
+							graphicDimensions={graphicDimensions}
+							svgMargins={this.props.svgMargins}
+							data={this.props.data}
+							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
+							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
+							xAxisLegend={this.props.xAxisLegend}
+							yAxisLegend={this.props.yAxisLegend}
+							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
+							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
+						/>)
+				break
+
 			case "grouped-bar":
 				chart = (<text transform={"translate(50,300)"}>
 							This will be a grouped bar chart
@@ -62,12 +78,6 @@ class Chart extends Component {
 			case "stacked-bar":
 				chart = (<text transform={"translate(50,300)"}>
 							This will be a stacked bar chart
-						</text>)
-				break
-
-			case "line":
-				chart = (<text transform={"translate(50,300)"}>
-							This will be a line chart
 						</text>)
 				break
 

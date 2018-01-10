@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { scaleLinear, scaleBand } from 'd3-scale'
 import Whitebox from '../shared/Whitebox'
-import YAxis from './YAxis'
+import YAxis from '../shared/YAxis'
 import Bars from './Bars'
-import XAxis from './XAxis'
-import Baseline from './Baseline'
+import XAxis from '../shared/XAxis'
+import Baseline from '../shared/Baseline'
 import XAxisLegend from '../shared/XAxisLegend'
 import YAxisLegend from '../shared/YAxisLegend'
 
@@ -21,7 +21,9 @@ class VerticalBarChart extends Component {
 		const maxValue = Math.max(...this.props.data.map(d => d.value))
 
 		this.xScale
-			.padding(0.5)
+			.paddingInner(0.3)
+			.paddingOuter(0.5)
+			.align(0.7)
 			.domain(this.props.data.map(d => d.title))
 			.range([0, this.props.graphicDimensions.width])
 
@@ -82,7 +84,6 @@ class VerticalBarChart extends Component {
 			</g>
 		)
 	}
-
 }
 
 export default VerticalBarChart

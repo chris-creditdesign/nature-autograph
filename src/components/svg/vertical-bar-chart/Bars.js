@@ -8,7 +8,7 @@ const Bars = ({ xScale, yScale, data, graphicDimensions }) => {
 		data.map(datum => 
 			<rect
 				key={datum.title}
-				x={xScale(datum.title)}
+				x={xScale(datum.title) - (xScale.bandwidth() / 2)}
 				y={yScale(datum.value)}
 				height={height - yScale(datum.value)}
 				width={xScale.bandwidth()}

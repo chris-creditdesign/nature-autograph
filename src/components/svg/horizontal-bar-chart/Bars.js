@@ -7,7 +7,7 @@ const Bars = ({ xScale, yScale, data }) => {
 			<rect
 				key={datum.title}
 				x={0}
-				y={yScale(datum.title)}
+				y={yScale(datum.title) - (yScale.bandwidth() / 2)}
 				height={yScale.bandwidth()}
 				width={xScale(datum.value)}
 				fill={"#ea5153"}

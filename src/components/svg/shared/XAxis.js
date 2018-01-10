@@ -37,9 +37,9 @@ class XAxis extends Component {
 		const ticks = this.props.data.map( datum => 
 				<line
 					key={datum.title}
-					x1={this.props.xScale(datum.title) + (this.props.xScale.bandwidth() / 2)}
+					x1={this.props.xScale(datum.title)}
 					y1={0}
-					x2={this.props.xScale(datum.title) + (this.props.xScale.bandwidth() / 2)}
+					x2={this.props.xScale(datum.title)}
 					y2={8}
 					style={smallTickStyle}
 				/>
@@ -48,7 +48,7 @@ class XAxis extends Component {
 		const labels = this.props.data.map( datum => 
 					<text
 						key={datum.title}
-						x={this.props.xScale(datum.title) + (this.props.xScale.bandwidth() / 2)}
+						x={this.props.xScale(datum.title)}
 						y={25}
 						dy={0}
 						style={textStyle}
