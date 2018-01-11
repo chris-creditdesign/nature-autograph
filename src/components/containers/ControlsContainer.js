@@ -7,6 +7,8 @@ const mapStateToProps = (state, props) =>
 		headline: state.headline,
 		standfirst: state.standfirst,
 		data: state.data,
+		independentVariableIndex: state.independentVariableIndex,
+		dependentVariables: state.dependentVariables,
 		fileName: state.fileName,
 		columnList: state.columnList,
 		chartType: state.chartType,
@@ -29,6 +31,16 @@ const mapDispatchToProps = (dispatch) =>
 		onDataChange(value) {
 			dispatch(
 				actions.changeData(value)
+			)
+		},
+		onIndependentVariableIndexChange(value) {
+			dispatch(
+				actions.changeIndependentVariableIndex(value)
+			)
+		},
+		onDependentVariablesChange(value) {
+			dispatch(
+				actions.changeDependentVariables(value)
 			)
 		},
 		onFileNameChange(value) {

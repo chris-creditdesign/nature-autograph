@@ -6,10 +6,13 @@ const mapStateToProps = (state, props) =>
 	({
 		headline: state.headline,
 		standfirst: state.standfirst,
+		data: state.data,
+		columnList: state.columnList,
+		independentVariableIndex: state.independentVariableIndex,
+		dependentVariables: state.dependentVariables,
 		xAxisLegend: state.xAxisLegend,
 		yAxisLegend: state.yAxisLegend,
 		chartType: state.chartType,
-		data: state.data,
 		svgMargins: state.svgMargins,
 		svgDimensions: state.svgDimensions
 	})

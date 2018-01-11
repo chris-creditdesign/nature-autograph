@@ -30,6 +30,18 @@ export const changeColumnList = (list=[]) =>
 		payload: list
 	})
 
+export const changeIndependentVariableIndex = (index=0) =>
+	({
+		type: C.CHANGE_INDEPENDENT_VARIABLE_INDEX,
+		payload: index
+	})
+
+export const changeDependentVariables = (list=[]) =>
+	({
+		type: C.CHANGE_DEPENDENT_VARIABLES,
+		payload: list
+	})
+
 export const changeChartType = (chartType="vertical-bar") =>
 	({
 		type: C.CHANGE_CHART_TYPE,

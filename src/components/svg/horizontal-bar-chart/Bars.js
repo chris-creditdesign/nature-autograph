@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Bars = ({ xScale, yScale, data }) => {
+const Bars = ({ xScale, yScale, xUnit, yUnit, data }) => {
 
 	const bars = (
 		data.map(datum => 
 			<rect
-				key={datum.title}
+				key={datum[yUnit]}
 				x={0}
-				y={yScale(datum.title) - (yScale.bandwidth() / 2)}
+				y={yScale(datum[yUnit]) - (yScale.bandwidth() / 2)}
 				height={yScale.bandwidth()}
-				width={xScale(datum.value)}
+				width={xScale(datum[xUnit])}
 				fill={"#ea5153"}
 			/>
 		)

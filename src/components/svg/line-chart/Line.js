@@ -1,11 +1,11 @@
 import React from 'react'
 import { line } from 'd3-shape'
 
-const Line = ({ xScale, yScale, data }) => {
+const Line = ({ xScale, yScale, xUnit, yUnit, data }) => {
 
 	const path = line()
-		.x( function(d) { return xScale(d.title)})
-		.y( function(d) { return yScale(d.value)})
+		.x( function(d) { return xScale(d[xUnit])})
+		.y( function(d) { return yScale(d[yUnit])})
 
 	const pathStyle = {
 		fill: "none",

@@ -28,8 +28,11 @@ class Chart extends Component {
 				chart = (<VerticalBarChart
 							graphicMargins={graphicMargins}
 							graphicDimensions={graphicDimensions}
-							svgMargins={this.props.svgMargins}
 							data={this.props.data}
+							columnList={this.props.columnList}
+							independentVariableIndex={this.props.independentVariableIndex}
+							dependentVariables={this.props.dependentVariables}
+							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
 							xAxisLegend={this.props.xAxisLegend}
@@ -43,8 +46,11 @@ class Chart extends Component {
 				chart = (<HorizontalBarChart
 							graphicMargins={graphicMargins}
 							graphicDimensions={graphicDimensions}
-							svgMargins={this.props.svgMargins}
 							data={this.props.data}
+							columnList={this.props.columnList}
+							independentVariableIndex={this.props.independentVariableIndex}
+							dependentVariables={this.props.dependentVariables}
+							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
 							xAxisLegend={this.props.xAxisLegend}
@@ -58,8 +64,11 @@ class Chart extends Component {
 				chart = (<LineChart
 							graphicMargins={graphicMargins}
 							graphicDimensions={graphicDimensions}
-							svgMargins={this.props.svgMargins}
 							data={this.props.data}
+							columnList={this.props.columnList}
+							independentVariableIndex={this.props.independentVariableIndex}
+							dependentVariables={this.props.dependentVariables}
+							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
 							xAxisLegend={this.props.xAxisLegend}
@@ -101,7 +110,13 @@ class Chart extends Component {
 
 			case "pie":
 				chart = (<text transform={"translate(50,300)"}>
-							This will be a horizontal bar chart
+							This will be a pie chart
+						</text>)
+				break
+
+			case "scatter-plot":
+				chart = (<text transform={"translate(50,300)"}>
+							This will be a scratter plot chart
 						</text>)
 				break
 

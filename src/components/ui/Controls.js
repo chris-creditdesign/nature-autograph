@@ -1,5 +1,6 @@
 import React from 'react'
 import TextInput from './TextInput'
+import SelectDependentVariable from './SelectDependentVariable'
 import DownloadChart from './DownloadChart'
 import FileUpload from './FileUpload'
 import FilePreview from './FilePreview'
@@ -15,7 +16,8 @@ const Controls = (props) => {
 		"area",
 		"horizontal-proportion-bar",
 		"vertical-proportion-bar",
-		"pie"
+		"pie",
+		"scatter-plot"
 	]
 
 	const chartTypeRadios = charTypes.map( (elem,i) => 
@@ -57,6 +59,17 @@ const Controls = (props) => {
 						{chartTypeRadios}
 					</ul>
 				</fieldset>
+
+				{props.dependentVariables.map( (elem,i) => 
+					(<SelectDependentVariable 
+						key={i}
+						legend={`Select dependent variable ${i + 1}`}
+						columnList={props.columnList}
+						independentVariableIndex={props.independentVariableIndex}
+						dependentVariables={props.dependentVariables}
+						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
+					/>)
+				)}
 
 				<TextInput 
 					legend="X Axis legend (can be multi-line)"

@@ -18,13 +18,16 @@ class VerticalBarChart extends Component {
 	}
 
 	render() {
-		const maxValue = Math.max(...this.props.data.map(d => d.value))
+		const xUnit = this.props.columnList[this.props.independentVariableIndex]
+		const yUnit = this.props.columnList[this.props.dependentVariables[0]]
+
+		const maxValue = Math.max(...this.props.data.map(d => d[yUnit]))
 
 		this.xScale
 			.paddingInner(0.3)
 			.paddingOuter(0.5)
 			.align(0.7)
-			.domain(this.props.data.map(d => d.title))
+			.domain(this.props.data.map(d => d[xUnit]))
 			.range([0, this.props.graphicDimensions.width])
 
 		this.yScale
@@ -49,6 +52,8 @@ class VerticalBarChart extends Component {
 				<Bars
 					yScale={this.yScale}
 					xScale={this.xScale}
+					yUnit={yUnit}
+					xUnit={xUnit}
 					data={this.props.data}
 					graphicDimensions={this.props.graphicDimensions}
 				/>

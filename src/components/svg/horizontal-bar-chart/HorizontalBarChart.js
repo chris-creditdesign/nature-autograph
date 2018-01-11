@@ -18,7 +18,10 @@ class HorizontalBarChart extends Component {
 	}
 
 	render() {
-		const maxValue = Math.max(...this.props.data.map(d => d.value))
+		const xUnit = this.props.columnList[this.props.dependentVariables[0]]
+		const yUnit = this.props.columnList[this.props.independentVariableIndex]
+
+		const maxValue = Math.max(...this.props.data.map(d => d[xUnit]))
 
 		this.xScale
 			.domain([0, maxValue])
@@ -28,7 +31,7 @@ class HorizontalBarChart extends Component {
 			.paddingInner(0.3)
 			.paddingOuter(0.5)
 			.align(0.9)
-			.domain(this.props.data.map(d => d.title).reverse())
+			.domain(this.props.data.map(d => d[yUnit]).reverse())
 			.range([this.props.graphicDimensions.height, 0])
 
 		return (
@@ -49,6 +52,8 @@ class HorizontalBarChart extends Component {
 				<Bars
 					yScale={this.yScale}
 					xScale={this.xScale}
+					yUnit={yUnit}
+					xUnit={xUnit}
 					data={this.props.data}
 				/>
 

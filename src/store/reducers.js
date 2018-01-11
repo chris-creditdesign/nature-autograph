@@ -27,6 +27,16 @@ export const columnList = (state=initialState.columnList, action) =>
 		action.payload :
 		state
 
+export const independentVariableIndex = (state=initialState.independentVariableIndex, action) =>
+	action.type === (C.CHANGE_INDEPENDENT_VARIABLE_INDEX) ?
+		action.payload :
+		state
+
+export const dependentVariables = (state=initialState.dependentVariables, action) =>
+	action.type === (C.CHANGE_DEPENDENT_VARIABLES) ?
+		action.payload :
+		state
+
 export const xAxisLegend = (state=initialState.xAxisLegend, action) => 
 	action.type === C.CHANGE_XAXIS_LEGEND ?
 		action.payload :
@@ -137,6 +147,8 @@ export default combineReducers({
 	data,
 	fileName,
 	columnList,
+	independentVariableIndex,
+	dependentVariables,
 	xAxisLegend,
 	yAxisLegend,
 	chartType,
