@@ -5,9 +5,9 @@ import '../stylesheets/App.css'
 
 const App = () => 
 	<div className="app">
-		<h1>Nature ChartBuilder
-		</h1>
-		<ChartContainer />
+		<div className="chartContainer">
+			<ChartContainer />
+		</div>
 		<ControlsContainer />
 	
 	</div>
