@@ -19,11 +19,15 @@ class LineChart extends Component {
 
 	render() {
 		const xUnit = this.props.columnList[this.props.independentVariableIndex]
-		const yUnit = this.props.columnList[this.props.dependentVariables[0]]
 
-		// console.log(this.props.dependentVariables)
+		let maxValueArray = []
 
-		const maxValue = Math.max(...this.props.data.map(d => d[yUnit]))
+		this.props.dependentVariables.map( (elem,i) => {
+			maxValueArray.push(...this.props.data.map(d => d[this.props.columnList[elem]]))
+			return null
+		})
+
+		let maxValue = Math.max(...maxValueArray)
 
 		this.xScale
 			.paddingInner(1)
@@ -51,13 +55,17 @@ class LineChart extends Component {
 					onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 				/>
 
-				<Line
-					yScale={this.yScale}
-					xScale={this.xScale}
-					yUnit={yUnit}
-					xUnit={xUnit}
-					data={this.props.data}
-				/>
+				{this.props.dependentVariables.map( (d,i) => 
+					<Line
+						key={i}
+						thisIndex={i}
+						yScale={this.yScale}
+						xScale={this.xScale}
+						yUnit={this.props.columnList[d]}
+						xUnit={xUnit}
+						data={this.props.data}
+					/>
+				)}
 
 				<XAxis
 					xScale={this.xScale}

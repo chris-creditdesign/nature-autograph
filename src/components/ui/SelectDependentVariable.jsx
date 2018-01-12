@@ -8,13 +8,7 @@ class SelectDependentVariable extends Component {
 
 	}
 
-
 	handleChange(event) {
-
-		// console.log(`this.props.indexInArray is: ${this.props.indexInArray}`)
-		// console.log(`this.props.dependentVariables is ${this.props.dependentVariables}`)
-		// console.log(`event.target.value is: ${event.target.value}`)
-		// console.log(`this.props.columnList.indexOf(event.target.value) is: ${this.props.columnList.indexOf(event.target.value)}`)
 
 		const indexOfSelectedVariable = this.props.columnList.indexOf(event.target.value)
 
@@ -22,17 +16,12 @@ class SelectDependentVariable extends Component {
 
 		newDependentVariables.splice(this.props.indexInArray, 1, indexOfSelectedVariable)
 
-		// console.log(`newDependentVariables is: ${newDependentVariables}`)
-
 		this.props.onDependentVariablesChange(newDependentVariables)
 	}
 
 	render() {
 		const valueToDisplay = this.props.columnList[this.props.dependentVariables[this.props.indexInArray ]]
 		
-
-		console.log(`valueToDisplay is: ${valueToDisplay}`)
-
 		return	(<fieldset>
 				<legend>{`${this.props.legend}`}</legend>
 				<select name={"text"} value={valueToDisplay} onChange={this.handleChange}>

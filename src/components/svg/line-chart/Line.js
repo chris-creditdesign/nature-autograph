@@ -1,7 +1,15 @@
 import React from 'react'
 import { line } from 'd3-shape'
 
-const Line = ({ xScale, yScale, xUnit, yUnit, data }) => {
+const Line = ({ thisIndex, xScale, yScale, xUnit, yUnit, data }) => {
+
+	const colours = [
+		"#EA5153",
+		"#75C6C5",
+		"#5A527E",
+		"#8B0D16",
+		"#8FC297"	
+	]
 
 	const path = line()
 		.x( function(d) { return xScale(d[xUnit])})
@@ -9,7 +17,7 @@ const Line = ({ xScale, yScale, xUnit, yUnit, data }) => {
 
 	const pathStyle = {
 		fill: "none",
-		stroke: "#ea5153",
+		stroke: colours[thisIndex],
 		strokeWidth: 4,
 		strokeLinecap: "round",
 		strokeLinejoin: "round"
