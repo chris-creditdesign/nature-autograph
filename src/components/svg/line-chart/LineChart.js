@@ -21,6 +21,8 @@ class LineChart extends Component {
 		const xUnit = this.props.columnList[this.props.independentVariableIndex]
 		const yUnit = this.props.columnList[this.props.dependentVariables[0]]
 
+		// console.log(this.props.dependentVariables)
+
 		const maxValue = Math.max(...this.props.data.map(d => d[yUnit]))
 
 		this.xScale

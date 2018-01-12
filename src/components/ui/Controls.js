@@ -1,6 +1,7 @@
 import React from 'react'
 import TextInput from './TextInput'
 import SelectDependentVariable from './SelectDependentVariable'
+import AddDependentVariableButton from './AddDependentVariableButton'
 import DownloadChart from './DownloadChart'
 import FileUpload from './FileUpload'
 import FilePreview from './FilePreview'
@@ -35,6 +36,28 @@ const Controls = (props) => {
 		</li>
 	)
 
+	let addDependenVariableButton = null
+
+	switch(props.chartType) {
+		case "vertical-bar" :
+		case "horizontal-bar" :
+			addDependenVariableButton = null
+			break
+
+		default :
+			props.dependentVariables.length < 5 ?		
+				addDependenVariableButton = (
+					<AddDependentVariableButton
+						columnList={props.columnList}
+						dependentVariables={props.dependentVariables}
+						independentVariableIndex={props.independentVariableIndex}
+						onAddDependentVariable={(value) => props.onAddDependentVariable(value)}
+					/>
+				) :
+			addDependenVariableButton = null
+			break
+	}
+
 	return (
 		<div className="controls">
 
@@ -63,6 +86,7 @@ const Controls = (props) => {
 				{props.dependentVariables.map( (elem,i) => 
 					(<SelectDependentVariable 
 						key={i}
+						indexInArray={i}
 						legend={`Select dependent variable ${i + 1}`}
 						columnList={props.columnList}
 						independentVariableIndex={props.independentVariableIndex}
@@ -70,6 +94,8 @@ const Controls = (props) => {
 						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
 					/>)
 				)}
+
+				{addDependenVariableButton}
 
 				<TextInput 
 					legend="X Axis legend (can be multi-line)"

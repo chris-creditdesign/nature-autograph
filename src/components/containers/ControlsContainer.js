@@ -43,6 +43,16 @@ const mapDispatchToProps = (dispatch) =>
 				actions.changeDependentVariables(value)
 			)
 		},
+		onAddDependentVariable(value) {
+			dispatch(
+				actions.addDependentVariable(value)
+			)
+		},
+		onRemoveDependentVariable(value) {
+			dispatch(
+				actions.removeDependentVariable(value)
+			)
+		},
 		onFileNameChange(value) {
 			dispatch(
 				actions.changeFileName(value)

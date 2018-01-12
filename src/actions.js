@@ -42,6 +42,18 @@ export const changeDependentVariables = (list=[]) =>
 		payload: list
 	})
 
+export const addDependentVariable = (list=[]) =>
+	({
+		type: C.ADD_DEPENDENT_VARIABLE,
+		payload: list
+	})
+
+export const removeDependentVariable = (list=[]) =>
+	({
+		type: C.REMOVO_DEPENDENT_VARIABLES,
+		payload: list
+	})
+
 export const changeChartType = (chartType="vertical-bar") =>
 	({
 		type: C.CHANGE_CHART_TYPE,

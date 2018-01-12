@@ -32,10 +32,30 @@ export const independentVariableIndex = (state=initialState.independentVariableI
 		action.payload :
 		state
 
-export const dependentVariables = (state=initialState.dependentVariables, action) =>
-	action.type === (C.CHANGE_DEPENDENT_VARIABLES) ?
-		action.payload :
-		state
+export const dependentVariables = (state=initialState.dependentVariables, action) => {
+	
+	switch(action.type) {
+
+		case C.CHANGE_DEPENDENT_VARIABLES :
+
+			return action.payload
+
+		case C.ADD_DEPENDENT_VARIABLE :
+
+			return [
+				...state,
+				action.payload
+			]
+
+		case C.REMOVE_DEPENDENT_VARIABLE :
+
+			return action.payload
+
+		default :
+
+			return state
+	}
+}
 
 export const xAxisLegend = (state=initialState.xAxisLegend, action) => 
 	action.type === C.CHANGE_XAXIS_LEGEND ?
@@ -56,7 +76,6 @@ export const source = (state=initialState.source, action) =>
 	action.type === C.CHANGE_SOURCE ?
 		action.payload :
 		state
-
 
 export const footnote = (state=initialState.footnote, action) =>
 	action.type === C.CHANGE_FOOTNOTE ?
