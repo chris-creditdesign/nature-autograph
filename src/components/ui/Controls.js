@@ -36,12 +36,15 @@ const Controls = (props) => {
 		</li>
 	)
 
+	let multiVariableChart = null
 	let addDependenVariableButton = null
+	let selectDependentVariables = null
 
 	switch(props.chartType) {
 		case "vertical-bar" :
 		case "horizontal-bar" :
 			addDependenVariableButton = null
+			multiVariableChart = false
 			break
 
 		default :
@@ -54,9 +57,34 @@ const Controls = (props) => {
 						onAddDependentVariable={(value) => props.onAddDependentVariable(value)}
 					/>
 				) :
-			addDependenVariableButton = null
+				addDependenVariableButton = null
+			multiVariableChart = true
 			break
 	}
+
+	selectDependentVariables = multiVariableChart ?
+		props.dependentVariables.map( (elem,i) => 
+					(<SelectDependentVariable 
+						key={i}
+						indexInArray={i}
+						legend={`Select dependent variable ${i + 1}`}
+						columnList={props.columnList}
+						independentVariableIndex={props.independentVariableIndex}
+						dependentVariables={props.dependentVariables}
+						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
+						onRemoveDependentVariable={(value) => props.onRemoveDependentVariable(value)}
+					/>)
+				) :
+			<SelectDependentVariable 
+						indexInArray={0}
+						legend={`Select dependent variable`}
+						columnList={props.columnList}
+						independentVariableIndex={props.independentVariableIndex}
+						dependentVariables={props.dependentVariables}
+						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
+						onRemoveDependentVariable={(value) => props.onRemoveDependentVariable(value)}
+					/>
+
 
 	return (
 		<div className="controls">
@@ -83,18 +111,7 @@ const Controls = (props) => {
 					</ul>
 				</fieldset>
 
-				{props.dependentVariables.map( (elem,i) => 
-					(<SelectDependentVariable 
-						key={i}
-						indexInArray={i}
-						legend={`Select dependent variable ${i + 1}`}
-						columnList={props.columnList}
-						independentVariableIndex={props.independentVariableIndex}
-						dependentVariables={props.dependentVariables}
-						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
-						onRemoveDependentVariable={(value) => props.onRemoveDependentVariable(value)}
-					/>)
-				)}
+				{selectDependentVariables}
 
 				{addDependenVariableButton}
 
