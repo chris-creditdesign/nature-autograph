@@ -6,6 +6,7 @@ const mapStateToProps = (state, props) =>
 	({
 		headline: state.headline,
 		standfirst: state.standfirst,
+		keyHeight: state.keyHeight,
 		data: state.data,
 		columnList: state.columnList,
 		independentVariableIndex: state.independentVariableIndex,
@@ -27,6 +28,11 @@ const mapDispatchToProps = (dispatch) =>
 		onStandfirstHeightChange(value) {
 			dispatch(
 				actions.changeStandfirstHeight(value)
+			)
+		},
+		onKeyHeightChange(value) {
+			dispatch(
+				actions.changeKeyHeight(value)
 			)
 		},
 		onYAxisWidthChange(value) {

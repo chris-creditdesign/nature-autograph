@@ -27,14 +27,14 @@ class Standfirst extends Component {
 		}
 
 		return ( <text
-					ref = { text => this.textElement = text }
-					style = { standfirstStyle }>
+					ref={ text => this.textElement = text }
+					style={ standfirstStyle }>
 
 					{this.props.text.split(/\r?\n/g).map((text, i) =>
 						<tspan
-							key = { i }
-							x = { this.props.svgMargins.right }
-							y = { this.props.svgMargins.top + this.props.svgMargins.headlineHeight + (i * 20) }> 
+							key={ i }
+							x={ this.props.svgMargins.right }
+							y={ this.props.svgMargins.top + this.props.svgMargins.headlineHeight + (i * 20) }> 
 							{ text }
 						</tspan>
 					)} 

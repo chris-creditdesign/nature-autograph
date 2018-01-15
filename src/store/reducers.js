@@ -140,6 +140,11 @@ export const standfirstHeight = (state=36, action) =>
 		action.payload :
 		state
 
+export const keyHeight = (state=30, action) =>
+	action.type === C.CHANGE_KEY_HEIGHT ?
+		action.payload :
+		state
+
 export const xAxisHeight = (state=36, action) => 
 	action.type === C.CHANGE_XAXIS_HEIGHT ?
 		action.payload :
@@ -181,6 +186,7 @@ export default combineReducers({
 		right,
 		headlineHeight,
 		standfirstHeight,
+		keyHeight,
 		xAxisHeight,
 		yAxisWidth,
 		xAxisLegendHeight,

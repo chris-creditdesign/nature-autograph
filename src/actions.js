@@ -72,6 +72,12 @@ export const changeStandfirstHeight = (standfirstHeight=36) =>
 		payload: standfirstHeight
 	})
 
+export const changeKeyHeight = (keyHeight=30) =>
+	({
+		type: C.CHANGE_KEY_HEIGHT,
+		payload: keyHeight
+	})
+
 export const changeYAxisWidth = (yAxisWidth=30) =>
 	({
 		type: C.CHANGE_YAXIS_WIDTH,

@@ -31,6 +31,7 @@
 		"bottom": 20,
 		"left": 20,
 		"headlineHeight": 30,
+		"keyHeight": 38,
 		"standfirstHeight": 36,
 		"yAxisWidth": 20,
 		"xAxisHeight": 16,
@@ -39,6 +40,6 @@
 	},
 	"svgDimensions": {
 		"width": 800,
-		"height": 500
+		"height":500
 	}
 }

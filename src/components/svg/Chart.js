@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Headline from './shared/Headline'
 import Standfirst from './shared/Standfirst'
+import Key from './shared/Key'
 import VerticalBarChart from './vertical-bar-chart/VerticalBarChart'
 import HorizontalBarChart from './horizontal-bar-chart/HorizontalBarChart'
 import LineChart from './line-chart/LineChart'
@@ -11,7 +12,7 @@ class Chart extends Component {
 	render() {
 
 		const graphicMargins = {
-			top: this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight + 10,
+			top: this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight + this.props.svgMargins.keyHeight + 10,
 			bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisLegendHeight + this.props.svgMargins.xAxisHeight + 15,
 			left: this.props.svgMargins.left + this.props.svgMargins.yAxisLegendWidth + this.props.svgMargins.yAxisWidth + 20,
 			right: this.props.svgMargins.right
@@ -23,6 +24,8 @@ class Chart extends Component {
 		}
 
 		let chart = null
+		let multiVariableChart = true
+
 		switch (this.props.chartType) {
 			case "vertical-bar":
 				chart = (<VerticalBarChart
@@ -40,6 +43,7 @@ class Chart extends Component {
 							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
 							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 						/>)
+				multiVariableChart = false
 				break
 
 			case "horizontal-bar":
@@ -58,6 +62,7 @@ class Chart extends Component {
 							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
 							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 						/>)
+				multiVariableChart = false
 				break
 
 			case "line":
@@ -124,6 +129,10 @@ class Chart extends Component {
 				chart = null;
 		}
 
+		if (this.props.dependentVariables < 2) {
+			multiVariableChart = false
+		}
+
 		return (
 			<svg id="svg-chart"
 				width={this.props.svgDimensions.width}
@@ -144,9 +153,17 @@ class Chart extends Component {
 					onHeadlineHeightChange={(value) => this.props.onHeadlineHeightChange(value)}
 				/>
 
+				<Key
+					svgMargins={this.props.svgMargins}
+					graphicDimensions={graphicDimensions}
+					columnList={this.props.columnList}
+					dependentVariables={this.props.dependentVariables}
+					multiVariableChart={multiVariableChart}
+					onKeyHeightChange={(value) => this.props.onKeyHeightChange(value)}
+				/>
+
 				<Standfirst
 					svgMargins={this.props.svgMargins}
-					svgDimensions={this.props.svgDimensions}
 					text={this.props.standfirst}
 					onStandfirstHeightChange={(value) => this.props.onStandfirstHeightChange(value)}
 				/>
