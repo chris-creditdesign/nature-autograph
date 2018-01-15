@@ -24,10 +24,8 @@ const Line = ({ thisIndex, xScale, yScale, xUnit, yUnit, data }) => {
 	}
 
 	return (
-		<g>
-			<path d={path(data)}
-				style={pathStyle} />	
-		</g>
+		<path d={path(data)}
+			style={pathStyle} />	
 	)
 }
 

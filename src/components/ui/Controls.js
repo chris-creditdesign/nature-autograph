@@ -36,7 +36,7 @@ const Controls = (props) => {
 		</li>
 	)
 
-	let multiVariableChart = null
+	let multiVariableChart = true
 	let addDependenVariableButton = null
 	let selectDependentVariables = null
 
@@ -48,18 +48,19 @@ const Controls = (props) => {
 			break
 
 		default :
-			props.dependentVariables.length < 5 ?		
-				addDependenVariableButton = (
+			multiVariableChart = true
+			break
+	}
+
+	if ((props.dependentVariables.length < 5) && (props.dependentVariables.length < (props.columnList.length - 1))) {
+		addDependenVariableButton = (
 					<AddDependentVariableButton
 						columnList={props.columnList}
 						dependentVariables={props.dependentVariables}
 						independentVariableIndex={props.independentVariableIndex}
 						onAddDependentVariable={(value) => props.onAddDependentVariable(value)}
 					/>
-				) :
-				addDependenVariableButton = null
-			multiVariableChart = true
-			break
+				)
 	}
 
 	selectDependentVariables = multiVariableChart ?
@@ -136,6 +137,7 @@ const Controls = (props) => {
 					onDataChange={(data) => props.onDataChange(data)}
 					onFileNameChange={(name) => props.onFileNameChange(name)}
 					onColumnListChange={(list) => props.onColumnListChange(list)}
+					onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
 				/>
 			</div>
 
