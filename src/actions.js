@@ -50,7 +50,7 @@ export const addDependentVariable = (list=[]) =>
 
 export const removeDependentVariable = (list=[]) =>
 	({
-		type: C.REMOVO_DEPENDENT_VARIABLES,
+		type: C.REMOVE_DEPENDENT_VARIABLE,
 		payload: list
 	})
 

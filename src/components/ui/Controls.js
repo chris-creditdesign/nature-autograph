@@ -92,6 +92,7 @@ const Controls = (props) => {
 						independentVariableIndex={props.independentVariableIndex}
 						dependentVariables={props.dependentVariables}
 						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
+						onRemoveDependentVariable={(value) => props.onRemoveDependentVariable(value)}
 					/>)
 				)}
 
