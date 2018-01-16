@@ -9,10 +9,8 @@ class Key extends Component {
 	}
 
 	checkKeyHeight() {
-		console.log()
-
-		if (this.props.svgMargins.keyHeight !== this.textElement.getBBox().height) {
-			this.props.onKeyHeightChange(Math.round(this.textElement.getBBox().height))
+		if (this.props.svgMargins.keyHeight !== this.groupElement.getBBox().height) {
+			this.props.onKeyHeightChange(Math.round(this.groupElement.getBBox().height))
 		}
 	}
 
@@ -20,18 +18,18 @@ class Key extends Component {
 		let x = 0;
 		let lineNumber = 0;
 
-		let tspans = this.textElement.getElementsByClassName("keyEntry")
-		let arrayOfTspans = Array.from(tspans)
+		let groups = this.groupElement.getElementsByClassName("keyEntry")
+		let arrayOfGroups = Array.from(groups)
 
-		arrayOfTspans.forEach( (elem, i) => {
+		arrayOfGroups.forEach( (elem, i) => {
 			elem.setAttribute("transform", `translate(${x},${lineNumber * 20})`)
 			if ((x + elem.getBBox().width) > this.props.graphicDimensions.width) {
 				x = 0
 				++lineNumber
 				elem.setAttribute("transform", `translate(${x},${lineNumber * 20})`)
-				x += (elem.getBBox().width + 10)
+				x += (elem.getBBox().width + 15)
 			} else {
-				x += (elem.getBBox().width + 10)
+				x += (elem.getBBox().width + 15)
 			}
 		})
 	}
@@ -59,25 +57,19 @@ class Key extends Component {
 			fontFamily: "NewsGothicMTOT-Regular"
 		}
 
-		const symbolStyle = {
-			fontFamily: "sans-serif"
-		}
-
-
 		const entries = this.props.multiVariableChart ?
 			this.props.dependentVariables.map( (elem, i) => 
 				<g className={"keyEntry"}
 					key={i}
 				>
-					<text
+					<rect
 						x={0}
-						y={1.5}
-						style={symbolStyle}
-						fill={colours[i]}>
-						◼
-					</text>
+						y={-10}
+						width={10}
+						height={10}
+						fill={colours[i]} />
 					<text
-						x={20}
+						x={18}
 						y={0}
 						style={standfirstStyle}>
 							{this.props.columnList[elem]}
@@ -88,7 +80,7 @@ class Key extends Component {
 				) :
 				null
 
-		return (<g ref={text => this.textElement = text}
+		return (<g ref={group => this.groupElement = group}
 					transform={`translate(${this.props.svgMargins.left},${this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight + 10})`}>
 					{entries}
 				</g>)
