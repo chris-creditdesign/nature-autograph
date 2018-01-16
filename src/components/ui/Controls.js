@@ -1,10 +1,12 @@
 import React from 'react'
 import TextInput from './TextInput'
+import DataInput from './DataInput'
 import SelectDependentVariable from './SelectDependentVariable'
 import AddDependentVariableButton from './AddDependentVariableButton'
 import DownloadChart from './DownloadChart'
 import FileUpload from './FileUpload'
 import FilePreview from './FilePreview'
+
 
 const Controls = (props) => {
 
@@ -86,11 +88,19 @@ const Controls = (props) => {
 						onRemoveDependentVariable={(value) => props.onRemoveDependentVariable(value)}
 					/>
 
-
 	return (
 		<div className="controls">
 
 			<form>
+
+				<DataInput
+					data={props.data}
+					columnList={props.columnList}
+					onDataChange={(data) => props.onDataChange(data)}
+					onFileNameChange={(name) => props.onFileNameChange(name)}
+					onColumnListChange={(list) => props.onColumnListChange(list)}
+					onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
+				/>
 
 				<TextInput 
 					legend="Headline"
