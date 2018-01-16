@@ -6,6 +6,7 @@ import Key from './shared/Key'
 import VerticalBarChart from './vertical-bar-chart/VerticalBarChart'
 import HorizontalBarChart from './horizontal-bar-chart/HorizontalBarChart'
 import LineChart from './line-chart/LineChart'
+import StackedBarChart from './stacked-bar-chart/StackedBarChart'
 
 class Chart extends Component {
 
@@ -90,9 +91,22 @@ class Chart extends Component {
 				break
 
 			case "stacked-bar":
-				chart = (<text transform={"translate(50,300)"}>
-							This will be a stacked bar chart
-						</text>)
+				chart = (<StackedBarChart
+							graphicMargins={graphicMargins}
+							graphicDimensions={graphicDimensions}
+							data={this.props.data}
+							columnList={this.props.columnList}
+							independentVariableIndex={this.props.independentVariableIndex}
+							dependentVariables={this.props.dependentVariables}
+							svgMargins={this.props.svgMargins}
+							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
+							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
+							xAxisLegend={this.props.xAxisLegend}
+							yAxisLegend={this.props.yAxisLegend}
+							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
+							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
+						/>)
+				multiVariableChart = true
 				break
 
 			case "area":
