@@ -7,14 +7,20 @@ import VerticalBarChart from './vertical-bar-chart/VerticalBarChart'
 import HorizontalBarChart from './horizontal-bar-chart/HorizontalBarChart'
 import LineChart from './line-chart/LineChart'
 import StackedBarChart from './stacked-bar-chart/StackedBarChart'
+import CopyrightMark from './shared/CopyrightMark'
 
 class Chart extends Component {
 
 	render() {
 
+		const copyrightMarkDimensions = {
+			width: 80,
+			height: 15
+		}
+
 		const graphicMargins = {
 			top: this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight + this.props.svgMargins.keyHeight + 10,
-			bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisLegendHeight + this.props.svgMargins.xAxisHeight + 15,
+			bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisLegendHeight + this.props.svgMargins.xAxisHeight + copyrightMarkDimensions.height + 15,
 			left: this.props.svgMargins.left + this.props.svgMargins.yAxisLegendWidth + this.props.svgMargins.yAxisWidth + 20,
 			right: this.props.svgMargins.right
 		}
@@ -183,6 +189,11 @@ class Chart extends Component {
 				/>
 
 				{chart}
+
+				<CopyrightMark
+					x={this.props.svgDimensions.width - copyrightMarkDimensions.width - this.props.svgMargins.right}
+					y={this.props.svgDimensions.height - copyrightMarkDimensions.height - this.props.svgMargins.left}
+				/>
 
 			</svg>
 		)
