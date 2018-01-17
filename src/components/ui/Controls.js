@@ -158,12 +158,6 @@ const Controls = (props) => {
 				/>
 			</div>
 
-			<FilePreview
-				data={props.data}
-				fileName={props.fileName}
-				columnList={props.columnList}
-			/>
-
 			<div>
 				<DownloadChart />
 			</div>

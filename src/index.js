@@ -6,14 +6,14 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
 
-// const initialState = localStorage["nature-autograph"] ?
-// 	JSON.parse(localStorage["nature-autograph"]) :
-// 	sampleData
+const initialState = localStorage["nature-autograph"] ?
+	JSON.parse(localStorage["nature-autograph"]) :
+	sampleData
 
-// const saveState = () =>
-// 	localStorage["nature-autograph"] = JSON.stringify(store.getState())
+const saveState = () =>
+	localStorage["nature-autograph"] = JSON.stringify(store.getState())
 
-const initialState = sampleData
+// const initialState = sampleData
 
 const store = createStore(
 		appReducer,
@@ -21,7 +21,7 @@ const store = createStore(
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 		)
 
-// store.subscribe(saveState)
+store.subscribe(saveState)
 
 window.store = store
 
