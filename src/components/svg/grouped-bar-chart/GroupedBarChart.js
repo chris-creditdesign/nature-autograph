@@ -46,8 +46,6 @@ class GroupedBarChart extends Component {
 			.domain([0, maxValue])
 			.range([this.props.graphicDimensions.height, 0])
 
-		console.log(this.props.data)
-
 		return (
 			<g transform={`translate(${this.props.graphicMargins.left},${this.props.graphicMargins.top})`}>
 

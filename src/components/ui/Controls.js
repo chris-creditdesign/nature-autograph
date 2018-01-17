@@ -6,8 +6,6 @@ import SelectDependentVariable from './SelectDependentVariable'
 import AddDependentVariableButton from './AddDependentVariableButton'
 import DownloadChart from './DownloadChart'
 import FileUpload from './FileUpload'
-import FilePreview from './FilePreview'
-
 
 const Controls = (props) => {
 
