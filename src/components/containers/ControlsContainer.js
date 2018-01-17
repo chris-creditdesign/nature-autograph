@@ -13,7 +13,8 @@ const mapStateToProps = (state, props) =>
 		columnList: state.columnList,
 		chartType: state.chartType,
 		xAxisLegend: state.xAxisLegend,
-		yAxisLegend: state.yAxisLegend
+		yAxisLegend: state.yAxisLegend,
+		svgDimensions: state.svgDimensions
 	})
 
 const mapDispatchToProps = (dispatch) =>
@@ -77,7 +78,18 @@ const mapDispatchToProps = (dispatch) =>
 			dispatch(
 				actions.changeYAxisLegend(value)
 			)
+		},
+		onSvgWidthChange(value) {
+			dispatch(
+				actions.changeSvgWidth(value)
+			)
+		},
+		onSvgHeightChange(value) {
+			dispatch(
+				actions.changeSvgHeight(value)
+			)
 		}
+
 
 	})
 

@@ -105,8 +105,13 @@ export const errors = (state=[], action) => {
 
 }
 
-export const svgDimensions = (state=initialState.svgDimensions, action) =>
-	action.type === C.CHANGE_SVG_DIMENSIONS ?
+export const width = (state=800, action) =>
+	action.type === C.CHANGE_SVG_WIDTH ?
+		action.payload :
+		state
+
+export const height = (state=500, action) =>
+	action.type === C.CHANGE_SVG_HEIGHT ?
 		action.payload :
 		state
 
@@ -192,5 +197,8 @@ export default combineReducers({
 		xAxisLegendHeight,
 		yAxisLegendWidth
 	}),
-	svgDimensions
+	svgDimensions: combineReducers({
+		width,
+		height
+	})
 })

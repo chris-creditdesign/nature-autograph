@@ -1,5 +1,6 @@
 import React from 'react'
 import TextInput from './TextInput'
+import NumberInput from './NumberInput'
 import DataInput from './DataInput'
 import SelectDependentVariable from './SelectDependentVariable'
 import AddDependentVariableButton from './AddDependentVariableButton'
@@ -113,6 +114,12 @@ const Controls = (props) => {
 					rows={5}
 					defaultValue={props.standfirst}
 					onChange={(e) => props.onStandfirstChange(e.target.value)}
+				/>
+
+				<NumberInput
+					legend="Chart height"
+					defaultValue={props.svgDimensions.height}
+					onChange={(e) => props.onSvgHeightChange(e.target.value)}
 				/>
 
 				<fieldset onChange={(e) => props.onChartTypeChange(e.target.value)}>

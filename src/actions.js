@@ -60,6 +60,18 @@ export const changeChartType = (chartType="vertical-bar") =>
 		payload: chartType
 	})
 
+export const changeSvgWidth = (width=800) =>
+	({
+		type: C.CHANGE_SVG_WIDTH,
+		payload: width
+	})
+
+export const changeSvgHeight = (height=800) =>
+	({
+		type: C.CHANGE_SVG_HEIGHT,
+		payload: height
+	})
+
 export const changeHeadlineHeight = (headlineHeight=30) =>
 	({
 		type: C.CHANGE_HEADLINE_HEIGHT,
