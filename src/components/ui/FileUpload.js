@@ -16,6 +16,7 @@ const FileUpload = ({ onDataChange, onFileNameChange, onColumnListChange, onDepe
 
 		onDataChange(data)
 		onColumnListChange(data.columns)
+		onDependentVariablesChange([1])
 
 	}
 

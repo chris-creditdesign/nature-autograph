@@ -55,6 +55,7 @@ const Controls = (props) => {
 					onDataChange={(data) => props.onDataChange(data)}
 					onFileNameChange={(name) => props.onFileNameChange(name)}
 					onColumnListChange={(list) => props.onColumnListChange(list)}
+					onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
 				/>
 
 				<TextInput 

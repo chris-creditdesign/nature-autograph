@@ -8,6 +8,7 @@ const DataInput = ({ data, columnList, onDataChange, onFileNameChange, onColumnL
 
 		onDataChange(newData)
 		onColumnListChange(newData.columns)
+		onDependentVariablesChange([1])
 	}
 
 	const dataToString = () => {
