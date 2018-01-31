@@ -1,9 +1,21 @@
 {
 	"headline": "Headline",
-	"standfirst": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.",
+	"standfirst": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.\nEt labore et dolore magna aliqua.",
 	"xAxisLegend": "X axis legend",
 	"yAxisLegend": "Y axis legend",
 	"chartType": "vertical-bar",
+	"chartType": [
+		{"type": "vertical-bar", "multiVariable": false, "stacked": false, "active": true},
+		{"type": "horizontal-bar", "multiVariable": false, "stacked": false, "active": false},
+		{"type": "line", "multiVariable": true, "stacked": false, "active": false},
+		{"type": "grouped-bar", "multiVariable": true, "stacked": false, "active": false},
+		{"type": "stacked-bar", "multiVariable": true, "stacked": true, "active": false},
+		{"type": "area", "multiVariable": true, "stacked": false, "active": false},
+		{"type": "horizontal-proportion-bar", "multiVariable": true, "stacked": false, "active": false},
+		{"type": "vertical-proportion-bar", "multiVariable": true, "stacked": false, "active": false},
+		{"type": "pie", "multiVariable": true, "stacked": false, "active": false},
+		{"type": "scatter-plot", "multiVariable": true, "stacked": false, "active": false}
+	],
 	"data": [
 		{"title": "A", "value-1": 5,	"value-2": 4,	"value-3": 3,	"value-4": 2,	"value-5": 1 },
 		{"title": "B", "value-1": 8,	"value-2": 5,	"value-3": 5,	"value-4": 6,	"value-5": 7 },
@@ -21,7 +33,7 @@
 	"fileName": "No file uploaded",
 	"columnList": ["title", "value-1", "value-2", "value-3", "value-4", "value-5"],
 	"independentVariableIndex": 0,
-	"dependentVariables": [1,2,3,4,5],
+	"dependentVariables": [1],
 	"source": "Source:",
 	"footnote": "Footnote",
 	"errors": [],

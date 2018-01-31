@@ -40,17 +40,6 @@ export const dependentVariables = (state=initialState.dependentVariables, action
 
 			return action.payload
 
-		case C.ADD_DEPENDENT_VARIABLE :
-
-			return [
-				...state,
-				action.payload
-			]
-
-		case C.REMOVE_DEPENDENT_VARIABLE :
-
-			return action.payload
-
 		default :
 
 			return state

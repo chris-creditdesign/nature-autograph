@@ -57,7 +57,7 @@ class Key extends Component {
 			fontFamily: "NewsGothicMTOT-Regular"
 		}
 
-		const entries = this.props.multiVariableChart ?
+		const entries = this.props.dependentVariables.length > 1 ?
 			this.props.dependentVariables.map( (elem, i) => 
 				<g className={"keyEntry"}
 					key={i}

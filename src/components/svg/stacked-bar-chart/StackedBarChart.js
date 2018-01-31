@@ -30,8 +30,6 @@ class StackedBarChart extends Component {
 
 		const stacked = stacker(this.props.data)
 
-		const maxValue = Math.max(...stacked[stacked.length - 1].map(d => d[1]))
-
 		this.xScale
 			.paddingInner(0.3)
 			.paddingOuter(0.5)
@@ -40,8 +38,9 @@ class StackedBarChart extends Component {
 			.range([0, this.props.graphicDimensions.width])
 
 		this.yScale
-			.domain([0, maxValue])
+			.domain([0, this.props.maxValue])
 			.range([this.props.graphicDimensions.height, 0])
+			.nice()
 
 		const stackedBars = stacked.map( (data,i) => {
 			return (<StackedBars

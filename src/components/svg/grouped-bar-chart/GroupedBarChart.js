@@ -20,15 +20,6 @@ class GroupedBarChart extends Component {
 	render() {
 		const xUnit = this.props.columnList[this.props.independentVariableIndex]
 		
-		let maxValueArray = []
-
-		this.props.dependentVariables.map( (elem,i) => {
-			maxValueArray.push(...this.props.data.map(d => d[this.props.columnList[elem]]))
-			return null
-		})
-
-		let maxValue = Math.max(...maxValueArray)
-
 		this.xScale
 			.paddingInner(0.3)
 			.paddingOuter(0.5)
@@ -43,8 +34,9 @@ class GroupedBarChart extends Component {
 			.range([0, this.xScale.bandwidth()])
 
 		this.yScale
-			.domain([0, maxValue])
+			.domain([0, this.props.maxValue])
 			.range([this.props.graphicDimensions.height, 0])
+			.nice()
 
 		return (
 			<g transform={`translate(${this.props.graphicMargins.left},${this.props.graphicMargins.top})`}>

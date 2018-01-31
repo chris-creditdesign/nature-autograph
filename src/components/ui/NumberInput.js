@@ -1,11 +1,11 @@
 import React from 'react'
 
-const NumberInput = ({ legend, defaultValue, step=10, min=350, onChange }) => 
+const NumberInput = ({ legend, value, step=10, min, onChange }) => 
 	(<fieldset>
 		<legend>{`${legend}:`}</legend>
 			<input
 				type="number"
-				defaultValue={defaultValue}
+				value={value}
 				step={step}
 				min={min}
 				onChange={onChange}

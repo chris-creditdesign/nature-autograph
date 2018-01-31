@@ -20,15 +20,6 @@ class LineChart extends Component {
 	render() {
 		const xUnit = this.props.columnList[this.props.independentVariableIndex]
 
-		let maxValueArray = []
-
-		this.props.dependentVariables.map( (elem,i) => {
-			maxValueArray.push(...this.props.data.map(d => d[this.props.columnList[elem]]))
-			return null
-		})
-
-		let maxValue = Math.max(...maxValueArray)
-
 		this.xScale
 			.paddingInner(1)
 			.paddingOuter(0)
@@ -37,8 +28,9 @@ class LineChart extends Component {
 			.range([0, this.props.graphicDimensions.width])
 
 		this.yScale
-			.domain([0, maxValue])
-			.range([this.props.graphicDimensions.height, 0])	
+			.domain([0, this.props.maxValue])
+			.range([this.props.graphicDimensions.height, 0])
+			.nice()	
 
 		return (
 			<g transform={`translate(${this.props.graphicMargins.left},${this.props.graphicMargins.top})`}>

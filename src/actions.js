@@ -42,18 +42,6 @@ export const changeDependentVariables = (list=[]) =>
 		payload: list
 	})
 
-export const addDependentVariable = (list=[]) =>
-	({
-		type: C.ADD_DEPENDENT_VARIABLE,
-		payload: list
-	})
-
-export const removeDependentVariable = (list=[]) =>
-	({
-		type: C.REMOVE_DEPENDENT_VARIABLE,
-		payload: list
-	})
-
 export const changeChartType = (chartType="vertical-bar") =>
 	({
 		type: C.CHANGE_CHART_TYPE,
@@ -125,20 +113,3 @@ export const changeYAxisLegendWidth = (yAxisLegendWidth=30) =>
 		type: C.CHANGE_YAXIS_LEGEND_WIDTH,
 		payload: yAxisLegendWidth
 	})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

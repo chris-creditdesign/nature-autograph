@@ -6,7 +6,6 @@ class SelectDependentVariable extends Component {
 
 		this.handleChange = this.handleChange.bind(this)
 		this.handleClick = this.handleClick.bind(this)
-
 	}
 
 	handleChange(event) {
@@ -27,7 +26,7 @@ class SelectDependentVariable extends Component {
 		
 		newDependentVariables.splice(this.props.indexInArray, 1)
 		
-		this.props.onRemoveDependentVariable(newDependentVariables)
+		this.props.onDependentVariablesChange(newDependentVariables)
 	}
 
 	render() {

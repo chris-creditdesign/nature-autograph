@@ -22,7 +22,8 @@ class AddDependentVariableButton extends Component {
 
 		if (availableVariables.length) {
 			const newVariableIndex = this.props.columnList.indexOf(availableVariables[0])
-			this.props.onAddDependentVariable(newVariableIndex)
+			const newDependentVariables = [...this.props.dependentVariables, newVariableIndex]
+			this.props.onDependentVariablesChange(newDependentVariables)
 		}
 
 	}

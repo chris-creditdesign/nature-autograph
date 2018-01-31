@@ -21,11 +21,10 @@ class HorizontalBarChart extends Component {
 		const xUnit = this.props.columnList[this.props.dependentVariables[0]]
 		const yUnit = this.props.columnList[this.props.independentVariableIndex]
 
-		const maxValue = Math.max(...this.props.data.map(d => d[xUnit]))
-
 		this.xScale
-			.domain([0, maxValue])
+			.domain([0, this.props.maxValue])
 			.range([0, this.props.graphicDimensions.width])
+			.nice()
 
 		this.yScale
 			.paddingInner(0.3)

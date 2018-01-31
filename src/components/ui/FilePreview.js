@@ -2,7 +2,6 @@ import React from 'react'
 
 const FilePreview = ({ data, fileName, columnList }) => {
 
-
 	return (
 		<div>
 			<p>File name: <code>{fileName}</code></p>
@@ -24,15 +23,15 @@ const FilePreview = ({ data, fileName, columnList }) => {
 				{data.map( (datum, i) => {
 					return i < 5 ?
 						(<pre key={i}>
-									{columnList.map( (column, index, array) =>{ 
-										if (index < (array.length - 1)) {
-											return `${datum[column]}, `
-										} else {
-											return datum[column]
-										}
-									})}
-								</pre>) :
-						null
+							{columnList.map( (column, index, array) =>{ 
+								if (index < (array.length - 1)) {
+									return `${datum[column]}, `
+								} else {
+									return datum[column]
+								}
+							})}
+						</pre>)
+						: null
 					})}
 			</span>
 		</div>

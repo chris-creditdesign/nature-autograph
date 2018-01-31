@@ -9,32 +9,36 @@ import LineChart from './line-chart/LineChart'
 import StackedBarChart from './stacked-bar-chart/StackedBarChart'
 import GroupedBarChart from './grouped-bar-chart/GroupedBarChart'
 import CopyrightMark from './shared/CopyrightMark'
+import getMaxValue from '../../helpers/getMaxValue'
 
 class Chart extends Component {
 
 	render() {
 
 		const copyrightMarkDimensions = {
-			width: 80,
-			height: 15
-		}
-
+					width: 80,
+					height: 15
+				}
+		
 		const graphicMargins = {
-			top: this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight + this.props.svgMargins.keyHeight + 10,
-			bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisLegendHeight + this.props.svgMargins.xAxisHeight + copyrightMarkDimensions.height + 15,
-			left: this.props.svgMargins.left + this.props.svgMargins.yAxisLegendWidth + this.props.svgMargins.yAxisWidth + 20,
-			right: this.props.svgMargins.right
-		}
+					top: this.props.svgMargins.top + this.props.svgMargins.headlineHeight + this.props.svgMargins.standfirstHeight + this.props.svgMargins.keyHeight + 10,
+					bottom: this.props.svgMargins.bottom + this.props.svgMargins.xAxisLegendHeight + this.props.svgMargins.xAxisHeight + copyrightMarkDimensions.height + 15,
+					left: this.props.svgMargins.left + this.props.svgMargins.yAxisLegendWidth + this.props.svgMargins.yAxisWidth + 20,
+					right: this.props.svgMargins.right
+				}
 
-		const graphicDimensions = {
-			width: this.props.svgDimensions.width - graphicMargins.left - graphicMargins.right,
-			height: this.props.svgDimensions.height - graphicMargins.top - graphicMargins.bottom
-		}
+		 const graphicDimensions = {
+					width: this.props.svgDimensions.width - graphicMargins.left - graphicMargins.right,
+					height: this.props.svgDimensions.height - graphicMargins.top - graphicMargins.bottom
+				}
+
+		const chartType = this.props.chartType.filter( chart => chart.active )[0]
+
+		let maxValue = getMaxValue(this.props.dependentVariables, this.props.data, this.props.columnList, chartType)
 
 		let chart = null
-		let multiVariableChart = true
 
-		switch (this.props.chartType) {
+		switch (chartType.type) {
 			case "vertical-bar":
 				chart = (<VerticalBarChart
 							graphicMargins={graphicMargins}
@@ -43,6 +47,7 @@ class Chart extends Component {
 							columnList={this.props.columnList}
 							independentVariableIndex={this.props.independentVariableIndex}
 							dependentVariables={this.props.dependentVariables}
+							maxValue={maxValue}
 							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
@@ -51,7 +56,6 @@ class Chart extends Component {
 							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
 							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 						/>)
-				multiVariableChart = false
 				break
 
 			case "horizontal-bar":
@@ -62,6 +66,7 @@ class Chart extends Component {
 							columnList={this.props.columnList}
 							independentVariableIndex={this.props.independentVariableIndex}
 							dependentVariables={this.props.dependentVariables}
+							maxValue={maxValue}
 							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
@@ -70,7 +75,6 @@ class Chart extends Component {
 							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
 							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 						/>)
-				multiVariableChart = false
 				break
 
 			case "line":
@@ -81,6 +85,7 @@ class Chart extends Component {
 							columnList={this.props.columnList}
 							independentVariableIndex={this.props.independentVariableIndex}
 							dependentVariables={this.props.dependentVariables}
+							maxValue={maxValue}
 							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
@@ -99,6 +104,7 @@ class Chart extends Component {
 							columnList={this.props.columnList}
 							independentVariableIndex={this.props.independentVariableIndex}
 							dependentVariables={this.props.dependentVariables}
+							maxValue={maxValue}
 							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
@@ -107,7 +113,6 @@ class Chart extends Component {
 							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
 							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 						/>)
-				multiVariableChart = true
 				break
 
 			case "stacked-bar":
@@ -118,6 +123,7 @@ class Chart extends Component {
 							columnList={this.props.columnList}
 							independentVariableIndex={this.props.independentVariableIndex}
 							dependentVariables={this.props.dependentVariables}
+							maxValue={maxValue}
 							svgMargins={this.props.svgMargins}
 							onYAxisWidthChange={(value) => this.props.onYAxisWidthChange(value)}
 							onXAxisHeightChange={(value) => this.props.onXAxisHeightChange(value)}
@@ -126,7 +132,6 @@ class Chart extends Component {
 							onXAxisLegendHeightChange={(value) => this.props.onXAxisLegendHeightChange(value)}
 							onYAxisLegendWidthChange={(value) => this.props.onYAxisLegendWidthChange(value)}
 						/>)
-				multiVariableChart = true
 				break
 
 			case "area":
@@ -163,10 +168,6 @@ class Chart extends Component {
 				chart = null;
 		}
 
-		if (this.props.dependentVariables < 2) {
-			multiVariableChart = false
-		}
-
 		return (
 			<svg id="svg-chart"
 				width={this.props.svgDimensions.width}
@@ -192,7 +193,6 @@ class Chart extends Component {
 					graphicDimensions={graphicDimensions}
 					columnList={this.props.columnList}
 					dependentVariables={this.props.dependentVariables}
-					multiVariableChart={multiVariableChart}
 					onKeyHeightChange={(value) => this.props.onKeyHeightChange(value)}
 				/>
 

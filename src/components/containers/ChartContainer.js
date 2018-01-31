@@ -55,6 +55,7 @@ const mapDispatchToProps = (dispatch) =>
 				actions.changeYAxisLegendWidth(value)
 			)
 		}
+		
 	})
 
 const ChartContainer = connect(mapStateToProps,mapDispatchToProps)(Chart)

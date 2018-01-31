@@ -1,6 +1,5 @@
 import React from 'react'
 import { csvParse } from 'd3-dsv'
-import { range } from 'd3-array'
 
 const DataInput = ({ data, columnList, onDataChange, onFileNameChange, onColumnListChange, onDependentVariablesChange }) => {
 
@@ -9,10 +8,6 @@ const DataInput = ({ data, columnList, onDataChange, onFileNameChange, onColumnL
 
 		onDataChange(newData)
 		onColumnListChange(newData.columns)
-
-		newData.columns.length < 5 ?
-			onDependentVariablesChange(range(1,newData.columns.length)) :
-			onDependentVariablesChange(range(1,6))
 	}
 
 	const dataToString = () => {

@@ -2,6 +2,7 @@ import React from 'react'
 import TextInput from './TextInput'
 import NumberInput from './NumberInput'
 import DataInput from './DataInput'
+import SelectChartType from './SelectChartType'
 import SelectDependentVariable from './SelectDependentVariable'
 import AddDependentVariableButton from './AddDependentVariableButton'
 import DownloadChart from './DownloadChart'
@@ -9,83 +10,39 @@ import FileUpload from './FileUpload'
 
 const Controls = (props) => {
 
-	const charTypes = [
-		"vertical-bar",
-		"horizontal-bar",
-		"line",
-		"grouped-bar",
-		"stacked-bar",
-		"area",
-		"horizontal-proportion-bar",
-		"vertical-proportion-bar",
-		"pie",
-		"scatter-plot"
-	]
+	const chartType = props.chartType.filter( chart => chart.active )[0]
 
-	const chartTypeRadios = charTypes.map( (elem,i) => 
-		<li key={`chartChoice1-${elem}`}>
-			<label>
-				<input
-					type="radio"
-					name="chartChoice"
-					value={elem} 
-					defaultChecked={elem === props.chartType ? true : false}
-
-					/>
-					{`${elem.split("-").join(" ")} chart`}
-			</label>
-		</li>
-	)
-
-	let multiVariableChart = true
-	let addDependenVariableButton = null
-	let selectDependentVariables = null
-
-	switch(props.chartType) {
-		case "vertical-bar" :
-		case "horizontal-bar" :
-			addDependenVariableButton = null
-			multiVariableChart = false
-			break
-
-		default :
-			multiVariableChart = true
-			break
-	}
-
-	if ((props.dependentVariables.length < 5) && (props.dependentVariables.length < (props.columnList.length - 1))) {
-		addDependenVariableButton = (
-					<AddDependentVariableButton
+	const addDependenVariableButton = chartType.multiVariable ?
+		(props.dependentVariables.length < 5) ?
+			(props.dependentVariables.length < (props.columnList.length - 1)) ?
+					(<AddDependentVariableButton
 						columnList={props.columnList}
+						data={props.data}
 						dependentVariables={props.dependentVariables}
 						independentVariableIndex={props.independentVariableIndex}
-						onAddDependentVariable={(value) => props.onAddDependentVariable(value)}
-					/>
-				)
-	}
+						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
+					/>)
+				: null
+			: null
+		: null
 
-	selectDependentVariables = multiVariableChart ?
-		props.dependentVariables.map( (elem,i) => 
+	const selectDependentVariables = props.dependentVariables.map( (elem,i) => 
 					(<SelectDependentVariable 
 						key={i}
 						indexInArray={i}
-						legend={`Select dependent variable ${i + 1}`}
+						legend={`Select dependent variable ${
+							chartType.multiVariable ? i + 1 : ""}`}
 						columnList={props.columnList}
+						data={props.data}
 						independentVariableIndex={props.independentVariableIndex}
 						dependentVariables={props.dependentVariables}
+						dependentVariableMaxValue={props.dependentVariableMaxValue}
+						dependentScaleEnd={props.dependentScaleEnd}
+						onDependentScaleEndChange={(value) => props.onDependentScaleEndChange(value)}
 						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
-						onRemoveDependentVariable={(value) => props.onRemoveDependentVariable(value)}
 					/>)
-				) :
-			<SelectDependentVariable 
-						indexInArray={0}
-						legend={`Select dependent variable`}
-						columnList={props.columnList}
-						independentVariableIndex={props.independentVariableIndex}
-						dependentVariables={props.dependentVariables}
-						onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
-						onRemoveDependentVariable={(value) => props.onRemoveDependentVariable(value)}
-					/>
+				)
+
 
 	return (
 		<div className="controls">
@@ -98,7 +55,6 @@ const Controls = (props) => {
 					onDataChange={(data) => props.onDataChange(data)}
 					onFileNameChange={(name) => props.onFileNameChange(name)}
 					onColumnListChange={(list) => props.onColumnListChange(list)}
-					onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
 				/>
 
 				<TextInput 
@@ -116,17 +72,18 @@ const Controls = (props) => {
 
 				<NumberInput
 					legend="Chart height"
-					defaultValue={props.svgDimensions.height}
-					onChange={(e) => props.onSvgHeightChange(e.target.value)}
+					value={props.svgDimensions.height}
+					min={300}
+					onChange={(e) => props.onSvgHeightChange(parseInt(e.target.value, 10))}
 				/>
 
-				<fieldset onChange={(e) => props.onChartTypeChange(e.target.value)}>
-					<legend>Type of chart:</legend>
-					<ul>
-						{chartTypeRadios}
-					</ul>
-				</fieldset>
-
+				<SelectChartType
+					chartType={props.chartType}
+					dependentVariables={props.dependentVariables}
+					onChartTypeChange={(value) => props.onChartTypeChange(value)}
+					onDependentVariablesChange={(value) => props.onDependentVariablesChange(value)}
+				/>
+				
 				{selectDependentVariables}
 
 				{addDependenVariableButton}

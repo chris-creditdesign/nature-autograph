@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactFileReader from 'react-file-reader'
 import { csv } from 'd3-request'
-import { range } from 'd3-array'
-
 
 const FileUpload = ({ onDataChange, onFileNameChange, onColumnListChange, onDependentVariablesChange }) => {
 
@@ -19,10 +17,6 @@ const FileUpload = ({ onDataChange, onFileNameChange, onColumnListChange, onDepe
 		onDataChange(data)
 		onColumnListChange(data.columns)
 
-		data.columns.length < 5 ?
-			onDependentVariablesChange(range(1,data.columns.length)) :
-			onDependentVariablesChange(range(1,6))
-		
 	}
 
 	return (
